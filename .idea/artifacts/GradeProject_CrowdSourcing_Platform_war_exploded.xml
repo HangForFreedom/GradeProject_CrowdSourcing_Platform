@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="GradeProject_CrowdSourcing_Platform:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="GradeProject_CrowdSourcing_Platform" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="GradeProject_CrowdSourcing_Platform/web/Web" />
+    </root>
+  </artifact>
+</component>
