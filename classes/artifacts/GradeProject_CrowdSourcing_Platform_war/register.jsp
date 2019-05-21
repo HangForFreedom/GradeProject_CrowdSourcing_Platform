@@ -1,46 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>用户注册</title>
-    <link href="./css/style_log.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>注册 - 千言万语 - Thousands of Words</title>
+    <link rel="stylesheet" type="text/css" href="css/register-login.css">
 </head>
+<body>
+<div id="box"></div>
+<div class="cent-box register-box">
+    <div class="cent-box-header">
+        <h1 class="main-title">千言万语</h1>
+        <h2 class="sub-title">Thousands of Words</h2>
+    </div>
 
-<body class="login">
-<div class="login_m">
-    <div class="login_logo"><img src="./css/logo.png" width="196" height="46"></div>
-    <div class="login_boder">
-        <div class="login_padding" id="login_model">
-            <!-- servlet的映射路径(url-pattern) -->
-            <form action="register.do" method="post" accept-charset="utf-8">
-                <label>
-                    <input type="text" id="username" class="txt_input txt_input2" name="username" placeholder="用户名">
-                </label>
-                <label>
-                    <input type="password" id="userpwd" class="txt_input" name="password" placeholder="密码">
-                </label>
-                <label>
-                    <input type="password" class="txt_input txt_input2" name="password2" placeholder="确认密码">
-                </label>
-                <label>
-                    <input type="text" id="phone" class="txt_input" name="phone" value="" placeholder="电话号码">
-                </label>
-                <div class="rem_sub">
-                    <label>
-                        <input type="submit" class="sub_button" name="button" id="button" value="提交" style="opacity: 0.7;">
-                        <input type="button" class="sub_button" style="margin-right: 105px; opacity: 0.7;" name="button" value="返回" onclick="window.location.href='index.jsp'">
-                    </label>
-                    <span style="color:red; float:left;">${msg}</span>
-                </div>
-            </form>
+    <div class="cont-main clearfix">
+        <div class="index-tab">
+            <div class="index-slide-nav">
+                <a href="index.jsp">登录</a>
+                <a href="register.jsp" class="active">注册</a>
+                <div class="slide-bar slide-bar1"></div>
+            </div>
         </div>
-        <!--login_padding  Sign up end-->
-    </div><!--login_boder end-->
-</div><!--login_m end-->
-<br> <br>
-<p align="center"> More Templates <a href="" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="" title="网页模板" target="_blank">网页模板</a></p>
 
+        <form class="login form" action="register.do" method="post" accept-charset="utf-8">
+            <div class="group">
+                <div class="group-ipt email">
+                    <input type="phone" name="phone" id="phone" class="ipt" placeholder="手机号码" required>
+                    <span class="errorTip">${phoDone}</span>
+                </div>
+                <div class="group-ipt user">
+                    <input type="text" name="username" id="user" class="ipt" placeholder="用户名" required>
+                    <span class="errorTip">${nameDone}</span>
+                </div>
+                <div class="group-ipt password">
+                    <input type="password" name="password" id="password" class="ipt" placeholder="设置登录密码" required>
+                </div>
+                <div class="group-ipt password1">
+                    <input type="password" name="password2" id="password1" class="ipt" placeholder="重复密码" required>
+                    <span class="errorTip">${pswError}</span>
+                </div>
+                <div class="group-ipt verify">
+                    <input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
+                    <img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
+                </div>
+            </div>
+            <div class="button">
+                <button type="submit" class="btn login-btn register-btn" id="button">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <p>千言万语 - Thousands of Words</p>
+    <p>Designed By ZengRong & <a href="zrong.me">zrong.me</a> 2016</p>
+</div>
+
+<script src='js/particles.js' type="text/javascript"></script>
+<script src='js/background.js' type="text/javascript"></script>
+<script src='js/jquery.min.js' type="text/javascript"></script>
+<script src='js/layer/layer.js' type="text/javascript"></script>
+<script src='js/index.js' type="text/javascript"></script>
+<script>
+    $('.imgcode').hover(function(){
+        layer.tips("看不清？点击更换", '.verify', {
+            time: 6000,
+            tips: [2, "#3c3c3c"]
+        })
+    },function(){
+        layer.closeAll('tips');
+    }).click(function(){
+        $(this).attr('src','http://zrong.me/home/index/imgcode?id=' + Math.random());
+    })
+</script>
 </body>
 </html>

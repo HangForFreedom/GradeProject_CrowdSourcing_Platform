@@ -1,434 +1,217 @@
+<%@ page import="com.gradp.bean.QuestionBean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="format-detection" content="telephone=no" />
-    <title>首页</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.2/assets/sprites/emojione.sprites.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/emojionearea.min.css" media="screen">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-
+    <title>问答</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
-<body id="body">
-<nav class="navbar  navbar-fixed-top" role="navigation" style="background: #e0620d ;padding-top: 3px;height:50px;">
-    <div class="container-fluid" style="background: #fff;">
-        <div class="navbar-header ">
-            <span class="navbar-brand ">杰瑞微博</span>
 
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#my-navbar-collapse">
-                <span class="sr-only">切换导航</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<body>
+
+<header>
+    <div class="top">
+        <a href="main.do" class="logo">千言万语</a>
+        <a href="main.do" class="nav">首页</a>
+        <a href="main.do" class="nav">全部问题</a>
+        <a href="" class="nav">高分悬赏</a>
+        <a href="" class="nav">我的问题</a>
+        <div class="user">
+            <!-- <a href="" class="log">登录</a>
+            <a href="" class="log">注册</a> -->
+            <a href="" class="log">个人中心</a>
+            <a href="logout.do" class="log">注销</a>
         </div>
-        <form action="" method="post" class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="#热门话题#">
-                <i class="glyphicon glyphicon-search btn_search" ></i>
-                <input type="submit" class="btn btn-default" value="提交">
+        <div class="so">
+            <input type="text" name="key" class="key" placeholder="请输入关键词">
+            <input type="submit" class="sobut" value="搜索答案">
+        </div>
+
+    </div>
+</header>
+
+
+
+<div class="ask_main">
+
+    <div class="amLeft" id="floatLeft">
+        <h2>全部分类</h2>
+        <ul>
+            <li><a href="">社会民生</a></li>
+            <li><a href="">健康生活</a></li>
+            <li><a href="">文化艺术</a></li>
+            <li><a href="">电脑网络</a></li>
+            <li><a href="">行政地区</a></li>
+            <li><a href="">医疗卫生</a></li>
+            <li><a href="">经济金融</a></li>
+            <li><a href="">法律法规</a></li>
+            <li><a href="">科学教育</a></li>
+            <li><a href="">体育运动</a></li>
+            <li><a href="">电子数码</a></li>
+            <li><a href="">娱乐休闲</a></li>
+            <li><a href="">心理分析</a></li>
+        </ul>
+    </div>
+
+    <div class="amIn">
+        <!---itemlist S--->
+        <c:forEach items="${quebs}" var="queb">
+            <div class="AskItemList">
+                <div class="top">
+                    <div class="info">
+                        <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
+                        <a href="visitOther.do?queid=${queb.queid}" class="title">${queb.title}</a>
+                    </div>
+                    <div class="da">
+                        <span><em>${queb.anssum2que}</em><dl>已有回答</dl></span>
+                    </div>
+                </div>
+                <div class="desc">${queb.content}
+                    <c:if test="${queb.image!=none }">
+                        <img class="mypic" src="${queb.image}" >
+                    </c:if>
+                </div>
+                <div class="tags">
+                    <a href="">html</a>
+                    <div class="Appreciation">
+                        <i></i><span>${queb.score}</span>
+                    </div>
+                    <div class="share_bar_con">
+                        <span>
+                            <dl>浏览量</dl><em>(16)</em><i>|</i>
+                            <dl>点赞</dl><em class="cur">(16)</em><i>|</i>
+                            <dl>收藏</dl><em class="cur">(8)</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+        <!---itemlist E--->
+        <!---itemlist S--->
+        <%--<div class="AskItemList">--%>
+            <%--<div class="top">--%>
+                <%--<div class="info">--%>
+                    <%--<span style="color:#666;">2小时前&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">xiezhengyi1986</a><span>&nbsp;的提问</span>--%>
+                    <%--<a href="vist.html" class="title">如何在dxf文件中添加新图层及在新添图层中添加实体信息？</a>--%>
+                <%--</div>--%>
+                <%--<div class="da">--%>
+                    <%--<span><em>24</em><dl>已有回答</dl></span>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="desc">--%>
+                <%--<img src="images/1.jpg" class="cover">--%>
+                <%--<div class="c">拦截所有的浏览器请求 access="ROLE_ADMIN" 只有ROLE_ADMIN角色的用才可以访问 规则角色名必须以ROLE_开头 为啥都得以ROLE_开头 还必须得大写 我试了小写role都不..--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="tags">--%>
+                <%--<a href="">html</a>--%>
+                <%--<div class="share_bar_con">--%>
+                	<%--<span>--%>
+                    	<%--<dl>浏览量</dl><em>(16)</em><i>|</i>--%>
+                        <%--<dl>点赞</dl><em class="cur">(16)</em><i>|</i>--%>
+                        <%--<dl>收藏</dl><em class="cur">(8)</em>--%>
+                    <%--</span>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <!---itemlist E--->
+    </div>
+
+    <div class="amRight">
+        <a href="raise.do" class="askBut">我有问题，我要提问！</a>
+        <h2>最新公告</h2>
+        <div class="titleList">
+            <a href="">谁帮忙下载个文件呢，有偿，文件需要1个下载积分</a>
+            <a href="">多个矩阵相乘程序的编写，我是新手</a>
+        </div>
+
+        <div class="userInfo">
+            <div class="us">
+                <a href="" class="portrait"><img src="${ub.role}"></a>
+                <div class="info">
+                    <a href="">${ub.username}</a>
+                </div>
+            </div>
+            <div class="wenda">
+                <div class="txt"><i class="d">积</i><span>我还有 <a href="">${ub.score}</a> 积分</span></div>
+                <div class="txt"><i class="w">问</i><span>提了 <a href="">${quesum}</a> 个问题 </span></div>
+                <div class="txt"><i class="d">答</i><span>回答了 <a href="">${anssum}</a> 个问题</span></div>
+            </div>
+        </div>
+
+        <h2>最新回答</h2>
+        <div class="newAnswer">
+            <!---item S--->
+            <div class="item">
+                <a href="" class="portrait"><img src="images/1.jpg"></a>
+                <div class="info">
+                    <a href="" class="uname">黑色幽默y</a> <dl>回答了：</dl><a href="" class="t">c# httpclient调用webapi获取json数</a>
+                </div>
+            </div>
+            <!---item E--->
+        </div>
+
+        <div class="floatRight" id="floatLeft2">
+            <div class="footer">
+                <h2><span>联系我们</span></h2>
+                <div class="qrc">
+                    <span><img src="images/ewm.png"><dl>微信客服</dl></span>
+                    <span><img src="images/ewm.png"><dl>QQ客服</dl></span>
+                </div>
+                <div class="qq">
+                    <span>客服QQ：373604177</span>
+                    <span>联系电话：18758036615</span>
+                    <span>E-mail：xiezhengyi@126.com</span>
+                </div>
+                <div class="nlink">
+                    <span><a href="">关于我们</a><i>|<i></span>
+                    <span><a href="">网站协议</a><i>|<i></span>
+                    <span><a href="">地图</a><i>|<i></span>
+                    <span><a href="">联系我们</a></span>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 1999-2019 江苏乐知网络技术有限公司江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有</p>
+                </div>
             </div>
 
-        </form>
-
-        <div class="collapse navbar-collapse" id="my-navbar-collapse">
-
-            <ul class="nav navbar-nav navbar-right" >
-                <li ><a href="info.jsp"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;${ub.username}</a></li>
-
-                <li class="dropdown">
-                    <a href="index.jsp" class="dropdown-toggle">注销</a>
-                    <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        设置 <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">登录</a></li>
-                        <li><a href="#">注册</a></li>
-                    </ul> -->
-                </li>
-            </ul>
-
         </div>
+
 
 
     </div>
-    <hr style="margin: 0;padding: 0;color:#222;width: 100%">
-</nav>
 
-<div class="container container_bg" >
-    <div class="theme-container">
-        <div class="theme-go">主题颜色</div>
-        <div class="theme">
-            <a class="white" id="blue" href="javascript:void(0)" onclick="changeWhite()"></a>
-            <a class="blue" id="blue" href="javascript:void(0)" onclick="changeBlue()"></a>
-            <a class="yellow" id="yellow" href="javascript:void(0)" onclick="changeYellow()"></a>
-            <a class="pink" id="pink" href="javascript:void(0)" onclick="changePink()"></a>
-            <a class="backg" href="javascript:void(0)" onclick="changeBeijing()"></a>
-        </div>
-    </div>
-    <div id="top"></div>
-    <div class="row">
-        <div class="col-sm-2"></div>
-
-        <div class="col-sm-6 col-xs-12 my_edit" >
-            <div class="row" id="edit_form" >
-                <span class="pull-left" style="margin:15px;">编写新鲜事</span>
-                <span class="tips pull-right" style="margin:15px;"></span>
-                <form action="fbwb.do" method="post" enctype="multipart/form-data" style="margin-top: 50px;">
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <input id="fbContent" name="fbContent">
-                            <!-- <div contentEditable="true" id="content" class="form-control " ></div> -->
-                        </div>
-                        <div class="col-sm-12" style="margin-top: 12px;">
-                            <!-- <span class="emoji" >表情</span> -->
-                            <span class="pic" >图片	</span>
-                            <div style="width:50px; height: 50px;" id="localImag">
-                                <img id="preview" src="">
-                            </div>
-
-                            <span>
-							    		<input type="file" name="img" id="doc"  class="select_Img" style="display: none" >
-                                <!-- <img class="preview" src=""> -->
-							    	</span>
-                            <!-- <div class="myEmoji" >
-                                <ul id="myTab" class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#set" data-toggle="tab">
-                                           预设
-                                        </a>
-                                    </li>
-                                    <li><a href="#hot" data-toggle="tab">热门</a></li>
-
-                                </ul>
-                                <div id="myTabContent" class="tab-content">
-                                    <div class="tab-pane fade in active" id="set">
-                                        <div class="emoji_1"></div>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="hot">
-                                      <div class="emoji_2"></div>
-                                    </div>
-
-                                </div>
-                            </div> -->
-                            <!-- <span> <input type="file" id="selectImg" value=""></input> </span> -->
-                            <input type="submit" id="send" class="btn btn-default pull-right" value="发布">
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-
-            <div class="row item_msg" >
-                <c:forEach items="${wbs}" var="wb">
-                    <div class="col-sm-12 col-xs-12 message" >
-                        <img src="${wb.role }" class="col-sm-2 col-xs-2" style="border-radius: 50%">
-                        <div class="col-sm-10 col-xs-10">
-                            <span style="font-weight: bold;">${wb.username }</span>
-                            <br>
-                            <small class="date" style="color:#999">1分钟前</small>
-                            <div class="msg_content">${wb.content }
-                                <c:if test="${wb.img!=none }">
-                                    <img class="mypic" src="${wb.img }" >
-                                </c:if>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-10 col-xs-10">
-                            <ul style="margin-top: 20px; list-style: none;">
-                                <li style="float:left;margin-left:50px;">转发</li>
-                                <li style="float:left;margin-left:50px;">赞(${wb.dzsum })</li>
-                                <li style="float:left;margin-left:50px;">评论(${wb.cosum })</li>
-                            </ul>
-                        </div>
-                        <c:forEach items="${wb.coms }" var="c">
-                            <br>评论内容：${c.content }
-                            <br>评论时间：${c.time }
-                            <br>评论人：${c.username }
-                        </c:forEach>
-                    </div>
-                </c:forEach>
-
-
-            </div>
-
-
-        </div>
-
-
-        <div class="col-sm-3 col-xs-12 part_right" >
-            <div class="row text-center inform">
-                <a href="mywb.do"><img src="${ub.role }" ></a>
-                <h4 style="font-weight: bold;">${ub.username}</h4>
-                <div class="col-sm-12 my_inform" >
-                    <div class="col-sm-4 col-xs-4">
-                        <div>${follow}</div>
-                        <div class="sort">关注</div>
-
-                    </div>
-                    <div class="col-sm-4 col-xs-4">
-                        <div>${fans}</div>
-                        <div class="sort">粉丝</div>
-                    </div>
-                    <div class="col-sm-4 col-xs-4">
-                        <div>${wbsum}</div>
-                        <div class="sort">微博</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row part_hot" >
-                <div class="col-sm-12">
-                    <span class="pull-left" style="padding: 10px;font-size:16px;font-weight: bold;">热门话题</span>
-                    <span class="pull-right" style="padding: 10px;">换话题</span>
-                </div>
-                <hr style="margin: 0;padding: 0;width: 100%">
-
-                <div class="col-sm-12 item_hot" >
-                    <span class="pull-left">#英雄联盟s7#</span>
-                    <span class="pull-right item_num">34.6亿</span>
-                </div>
-
-                <div class="col-sm-12 item_hot" >
-                    <span class="pull-left">#今天霜降#</span>
-                    <span class="pull-right item_num">2.6亿</span>
-                </div>
-
-                <div class="col-sm-12 item_hot" >
-                    <span class="pull-left">#亚洲新歌榜#</span>
-                    <span class="pull-right item_num">10.4亿</span>
-                </div>
-
-                <div class="col-sm-12 item_hot" >
-                    <span class="pull-left">#扑通扑通少女心#</span>
-                    <span class="pull-right item_num">1.5亿</span>
-                </div>
-
-                <div class="col-sm-12 item_hot" >
-                    <span class="pull-left">#突然开心#</span>
-                    <span class="pull-right item_num">1.1亿</span>
-                </div>
-                <hr style="margin: 0;padding: 0;width: 100%">
-
-                <div class="col-sm-12 text-center" style="padding: 10px"><a href="#">查看更多</a></div>
-
-            </div>
-
-        </div>
-    </div>
 
 
 </div>
-<script src="js/jquery-3.1.0.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/emojione.min.js"></script>
-<script type="text/javascript" src="js/emojionearea.js"></script>
-<!-- <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> -->
-<!-- <script type="text/javascript" src="js/jquery-ui.js"></script> -->
+
+
 <script type="text/javascript">
-    $(function(){
-        $("#fbContent").emojioneArea();
-    });
-</script>
-<script type="text/javascript">
-    $(function(){
-
-        $("#content").keyup(function(){
-
-            //判断输入的字符串长度
-            var content_len = $("#content").text().replace(/\s/g,"").length;
-
-            $(".tips").text("已经输入"+content_len+"个字");
-
-
-            if(content_len==0){
-                // alert(content);
-                $(".tips").text("");
-                $("#send").addClass("disabled");
-                return false;
-            }else{
-                $("#send").removeClass("disabled");
+    window.onload = function () {
+        // offset() 获得div1当前的位置，左上角坐标(x,y)
+        var pos =  $('#floatLeft').offset();
+        var posa =  $('#floatLeft2').offset();
+        //滚动条滚动事件
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > pos.top ) {
+                $('#floatLeft').css('top', $(this).scrollTop() - pos.top);
             }
-        });
-
-
-        $(".pic").click(function(){
-
-            $(".select_Img").click();
-
-
-        })
-
-        // 	function confirm(){
-
-        // 		var r= new FileReader();
-        // f=$(".select_Img").files[0];
-        // r.readAsDataURL(f);
-        // r.onload=function(e) {
-        // 	$(".preview").src=this.result;
-
-        // };
-        // 	}
-
-        //点击按钮发送内容
-        $("#send").click(function(){
-
-            // var myDate = new Date();
-
-            //   var min = myDate.getMinutes();
-
-            //   var time = min-(min-1);
-
-            //   //alert(time);
-
-            var content=$("#content").html();
-
-            //判断选择的是否是图片格式
-            var imgPath = $(".imgPath").text();
-            var start  = imgPath.lastIndexOf(".");
-            var postfix = imgPath.substring(start,imgPath.length).toUpperCase();
-
-
-            if(imgPath!=""){
-
-                if(postfix!=".PNG"&&postfix!=".JPG"&&postfix!=".GIF"&&postfix!=".JPEG"){
-                    alert("图片格式需为png,gif,jpeg,jpg格式");
-                }else{
-                    $(".item_msg").append("<div class='col-sm-12 col-xs-12 message' > <img src='img/icon.png' class='col-sm-2 col-xs-2' style='border-radius: 50%'><div class='col-sm-10 col-xs-10'><span style='font-weight: bold;''>Jack.C</span> <br><small class='date' style='color:#999'>刚刚</small><div class='msg_content'>"+content+"<img class='mypic' onerror='this.src='img/bg_1.jpg' src='file:///"+imgPath+"' ></div></div></div>");
-                }
-            }else{
-                $(".item_msg").append("<div class='col-sm-12 col-xs-12 message' > <img src='img/icon.png' class='col-sm-2 col-xs-2' style='border-radius: 50%'><div class='col-sm-10 col-xs-10'><span style='font-weight: bold;''>Jack.C</span> <br><small class='date' style='color:#999'>刚刚</small><div class='msg_content'>"+content+"</div></div></div>");
+            else if ($(this).scrollTop() <=  pos.top ) {
+                $('#floatLeft').css('top',0).css('position', 'relative');
             }
 
-        });
-
-        //添加表情包1
-        for (var i = 1; i < 60; i++) {
-
-            $(".emoji_1").append("<img src='img/f"+i+".png' style='width:35px;height:35px' >");
-        }
-        //添加表情包2
-        for (var i = 1; i < 61; i++) {
-
-            $(".emoji_2").append("<img src='img/h"+i+".png' style='width:35px;height:35px' >");
-        }
-
-
-        $(".emoji").click(function(){
-
-            $(".myEmoji").show();
-
-            //点击空白处隐藏弹出层
-            $(document).click(function (e) {
-
-                if (!$("#edit_form").is(e.target) && $("#edit_form").has(e.target).length === 0) {
-
-                    $(".myEmoji").hide();
-                }
-            });
-
-
-        });
-
-        //将表情添加到输入框
-        $(".myEmoji img").each(function(){
-            $(this).click(function(){
-                var url = $(this)[0].src;
-
-                $('#content').append("<img src='"+url+"' style='width:25px;height:25px' >");
-
-                $("#send").removeClass("disabled");
-            })
-        })
-
-        //放大或缩小预览图片
-        $(".mypic").click(function(){
-            var oWidth=$(this).width(); //取得图片的实际宽度
-            var oHeight=$(this).height(); //取得图片的实际高度
-
-            if($(this).height()!=200){
-                $(this).height(200);
-            }else{
-                $(this).height(oHeight + 200/oWidth*oHeight);
-
+            if ($(this).scrollTop() > posa.top ) {
+                $('#floatLeft2').css('top', $(this).scrollTop() - posa.top);
             }
-
+            else if ($(this).scrollTop() <=  posa.top ) {
+                $('#floatLeft2').css('top',0).css('position', 'relative');
+            }
         })
-
-    })
-</script>
-<script>
-    //返回顶部
-    var nav = document.getElementById("top");
-
-    nav.addEventListener('click', function(){
-        window.scrollTo(0,0);
-    });
-
-    window.onscroll = function(){
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;;
-        if (scrollTop > 200) {
-            nav.className = 'show';
-        } else {
-            nav.className = '';
-        }
     };
-</script>
-<script type="text/javascript">
-    //给文本域绑定事件
-    $(document).on('change','#doc',function(){
-        var file = $(this).val();
-        //预览图片
-        setImagePreview(file);
-    });
-    function setImagePreview(avalue) {
-        //文本域
-        var docObj = document.getElementById("doc");
-        //img
-        var imgObjPreview = document.getElementById("preview");
-        //div
-        var divs = document.getElementById("localImag");
-        if (docObj.files && docObj.files[0]) {
-            //火狐下，直接设img属性
-            imgObjPreview.style.display = 'block';
-            imgObjPreview.style.width = '170px';
-            imgObjPreview.style.height = '100px';
-            imgObjPreview.style.marginTop = '-30px';
-            imgObjPreview.style.marginLeft = '80px';
-            //imgObjPreview.src = docObj.files[0].getAsDataURL();
-            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
-        } else {
-            //IE下，使用滤镜
-            docObj.select();
-            var imgSrc = document.selection.createRange().text;
-            var localImagId = document.getElementById("localImag");
-            //必须设置初始大小
-            localImagId.style.width = "80px";
-            localImagId.style.height = "80px";
-            //图片异常的捕捉，防止用户修改后缀来伪造图片
-            try {
-                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)"
-                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-            } catch(e) {
-                alert("您上传的图片格式不正确，请重新选择!");
-                return false;
-            }
-            imgObjPreview.style.display = 'none';
-            document.selection.empty();
-        }
-        return true;
-    }
-
 </script>
 </body>
 </html>

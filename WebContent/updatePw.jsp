@@ -1,45 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>忘记密码</title>
-    <link href="./css/style_log.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>忘记密码 - 千言万语 - Thousands of Words</title>
+    <link rel="stylesheet" type="text/css" href="css/register-login.css">
 </head>
-<body class="login">
-<div class="login_m">
-    <div class="login_logo"><img src="./css/logo.png" width="196" height="46"></div>
-    <div class="login_boder">
-        <div class="login_padding" id="login_model">
-            <!-- servlet的映射路径(url-pattern) -->
-            <form action="update.do" method="post" accept-charset="utf-8">
-                <label>
-                    <input type="text" id="phone" class="txt_input" name="phone" value="" placeholder="电话号码">
-                </label>
-                <label>
-                    <input type="password" id="newpassword" class="txt_input" name="newpassword" value="" placeholder="新密码">
-                </label>
-                <label>
-                    <input type="password" id="newpassword2" class="txt_input" name="newpassword2" value="" placeholder="确认新密码">
-                </label>
-                <label>
-                    <input type="text" id="security" class="txt_input" name="security" value="" placeholder="验证码">
-                </label>
-                <div class="rem_sub">
-                    <label>
-                        <input type="submit" class="sub_button" name="button" id="button" value="更改" style="opacity: 0.7;">
-                        <input type="button" class="sub_button" style="margin-right: 105px; opacity: 0.7;" name="button" value="返回" onclick="window.location.href='index.jsp'">
-                    </label>
-                    <span style="color:red; float:left;">${msg}</span>
-                </div>
-            </form>
-        </div>
-        <!--login_padding  Sign up end-->
-    </div><!--login_boder end-->
-</div><!--login_m end-->
-<br> <br>
-<p align="center"> More Templates <a href="" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="" title="网页模板" target="_blank">网页模板</a></p>
+<body>
+<div id="box"></div>
+<div class="cent-box register-box">
+    <div class="cent-box-header">
+        <h1 class="main-title">千言万语</h1>
+        <h2 class="sub-title">Thousands of Words</h2>
+    </div>
 
+    <div class="cont-main clearfix">
+        <div class="index-tab">
+            <div class="index-slide-nav">
+                <a href="register.jsp" class="active">忘记密码</a>
+                <div class="slide-bar"></div>
+            </div>
+        </div>
+
+        <form class="login form" action="updatePw.do" method="post" accept-charset="utf-8">
+            <div class="group">
+                <div class="group-ipt email">
+                    <input type="phone" name="phone" id="phone" class="ipt" placeholder="手机号码" required>
+                    <span class="errorTip">${phoNull}</span>
+                </div>
+                <div class="group-ipt password">
+                    <input type="password" name="newpassword" id="password" class="ipt" placeholder="设置新的密码" required>
+                </div>
+                <div class="group-ipt password1">
+                    <input type="password" name="newpassword2" id="password1" class="ipt" placeholder="确认新的密码" required>
+                    <span class="errorTip">${pswError}</span>
+                </div>
+                <div class="group-ipt verify">
+                    <input type="text" name="security" id="verify" class="ipt" placeholder="输入验证码" required>
+                    <img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
+                </div>
+            </div>
+            <div class="button">
+                <button class="btn login-btn register-btn" style="width: 45%;float: left;" onclick="window.location.href='index.jsp'">返回</button>
+                <button type="submit" class="btn login-btn register-btn" style="width: 45%;float: right;">确认</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <p>千言万语 - Thousands of Words</p>
+    <p>Designed By ZengRong & <a href="zrong.me">zrong.me</a> 2016</p>
+</div>
+
+<script src='js/particles.js' type="text/javascript"></script>
+<script src='js/background.js' type="text/javascript"></script>
+<script src='js/jquery.min.js' type="text/javascript"></script>
+<script src='js/layer/layer.js' type="text/javascript"></script>
+<script src='js/index.js' type="text/javascript"></script>
+<script>
+    $('.imgcode').hover(function(){
+        layer.tips("看不清？点击更换", '.verify', {
+            time: 6000,
+            tips: [2, "#3c3c3c"]
+        })
+    },function(){
+        layer.closeAll('tips');
+    }).click(function(){
+        $(this).attr('src','http://zrong.me/home/index/imgcode?id=' + Math.random());
+    })
+</script>
 </body>
 </html>

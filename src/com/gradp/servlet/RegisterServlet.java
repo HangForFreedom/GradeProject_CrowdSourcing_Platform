@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
         String phone = req.getParameter("phone");
 
         if(!pwd1.equals(pwd2)) {
-            req.setAttribute("msg", "注册失败，两次输入密码不正确");
+            req.setAttribute("pswError", "两次输入密码不正确");
             req.getRequestDispatcher("register.jsp").forward(req, resp);
             return;
         }
@@ -45,10 +45,10 @@ public class RegisterServlet extends HttpServlet {
             req.getRequestDispatcher("register.jsp").forward(req, resp);
             return;
         }else if(request==2){
-            req.setAttribute("msg", "用户名已存在！");
+            req.setAttribute("nameDone", "用户名已存在");
             req.getRequestDispatcher("register.jsp").forward(req, resp);
         }else if(request==3){
-            req.setAttribute("msg", "电话号码已存在！");
+            req.setAttribute("phoDone", "电话号码已存在");
             req.getRequestDispatcher("register.jsp").forward(req, resp);
         }else {
             //注册成功

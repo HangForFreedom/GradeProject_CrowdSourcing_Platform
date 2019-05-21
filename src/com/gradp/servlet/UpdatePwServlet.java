@@ -23,8 +23,8 @@ public class UpdatePwServlet extends HttpServlet {
         String security = req.getParameter("security");
 
         if(!newpwd1.equals(newpwd2)) {
-            req.setAttribute("msg", "更改失败，两次输入密码不正确");
-            req.getRequestDispatcher("update.jsp").forward(req, resp);
+            req.setAttribute("pswError", "两次输入密码不正确");
+            req.getRequestDispatcher("updatePw.jsp").forward(req, resp);
             return;
         }
 
@@ -37,8 +37,8 @@ public class UpdatePwServlet extends HttpServlet {
 
         if(request==4) {
             //注册失败
-            req.setAttribute("msg", "手机号不存在");
-            req.getRequestDispatcher("update.jsp").forward(req, resp);
+            req.setAttribute("phoNull", "手机号未注册");
+            req.getRequestDispatcher("updatePw.jsp").forward(req, resp);
             return;
         }else {
             resp.sendRedirect("index.jsp");

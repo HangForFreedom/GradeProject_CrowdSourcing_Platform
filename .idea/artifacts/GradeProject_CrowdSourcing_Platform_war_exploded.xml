@@ -6,6 +6,16 @@
         <element id="directory" name="classes">
           <element id="module-output" name="GradeProject_CrowdSourcing_Platform" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-fileupload-1.2.2" />
+          <element id="library" level="project" name="standard" />
+          <element id="library" level="project" name="jstl" />
+          <element id="library" level="project" name="commons-beanutils-1.7.0" />
+          <element id="library" level="project" name="commons-collections-3.2" />
+          <element id="library" level="project" name="commons-io-2.1" />
+          <element id="library" level="project" name="commons-lang-2.4" />
+          <element id="library" level="project" name="commons-logging-1.0.4" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="GradeProject_CrowdSourcing_Platform/web/Web" />
     </root>

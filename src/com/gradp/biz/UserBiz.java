@@ -17,6 +17,23 @@ public class UserBiz {
 		
 		return ub;
 	}
+
+    /**
+     * session为空时，根据用户名查询用户所有的信息
+     * */
+    public UserBean queryAll(UserBean ubean){
+        UserBean ub = uid.queryAll(ubean);
+
+        return ub;
+    }
+
+
+	/**
+	 * 登录页手机号单独查重
+	 * */
+	public List<Map<String, String>> queryUserByPhone(String phone){
+		return uid.queryUserByPhone(phone);
+	}
 	
 	//注册
 	public int register(UserBean ub) {
@@ -48,4 +65,46 @@ public class UserBiz {
 		}
 		return uid.updatePwdByPhone(newPwd, phone);
 	}
+
+	/**
+	 * 查询用户的问题数量
+	 * */
+	public int queryQuestionById(int userid){
+		return uid.queryQuestionById(userid);
+	}
+
+	/**
+	 * 查询用户回答数量
+	 * */
+	public int queryAnswerById(int userid){
+		return uid.queryAnswerById(userid);
+	}
+
+	/**
+	 * 查询用户顶过的ansid列表
+	 * */
+	public List<Integer> queryAgreedAnsList(int userid){
+		return uid.queryAgreedAnsList(userid);
+	}
+
+	/**
+	 * 查询用户踩过的ansid列表
+	 * */
+	public List<Integer> queryDisagreedAnsList(int userid){
+		return uid.queryDisagreedAnsList(userid);
+	}
+
+    /**
+     * 根据userid查询用户积分
+     * */
+    public int queryUserScoreById(int userid){
+        return uid.queryUserScoreById(userid);
+    }
+
+    /**
+     * 根据userid更改用户积分（计算在java层做）
+     * */
+    public int updateUserScoreById(int score, int userid){
+        return uid.updateUserScoreById(score, userid);
+    }
 }

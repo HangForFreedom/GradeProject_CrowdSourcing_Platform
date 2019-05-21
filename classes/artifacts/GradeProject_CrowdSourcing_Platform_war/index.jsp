@@ -1,59 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>登陆</title>
-	<link href="./css/style_log.css" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<title>登录 - 千言万语 - Thousands of Words</title>
+	<link rel="stylesheet" type="text/css" href="css/register-login.css">
 </head>
+<body onload="url()">
+<div id="box"></div>
+<div class="cent-box">
+	<div class="cent-box-header">
+		<h1 class="main-title">千言万语</h1>
+		<h2 class="sub-title">Thousands of Words</h2>
+	</div>
 
-<body class="login" onload="url()">
-	<div class="login_m">
-		<div class="login_logo"><img src="./css/logo.png" width="196" height="46"></div>
-		<div class="login_boder">
-			<div class="login_padding" id="login_model">
-			<!-- servlet的映射路径(url-pattern) -->
-				<form action="login.do" method="post" accept-charset="utf-8" onsubmit="return checkForm(this)">
-					<h2>Your phone</h2>
-					<label>
-						<input type="text" id="phone" class="txt_input txt_input2" name="phone" value="${cookie.u.value}">
-					</label>
-					<h2>Your password</h2>
-					<label>
-						<input type="password" id="userpwd" class="txt_input" name="password" value="${cookie.p.value}">
-					</label>
-					<p class="forgot"><span style="color:red; float:left;">${msg}</span><a id="iforget" href="updatePw.jsp">忘记密码？</a></p>
-					<div class="rem_sub">
-						<div class="rem_sub_l">
-							<input type="checkbox" id="save_me" value="1" name="rempwd">
-							<label for="checkbox">记住密码</label>
-						</div>
-						<label>
-							<input type="submit" class="sub_button" style="margin-left: 10px; opacity: 0.7;" name="button" id="button" value="登录">
-							<input type="button" class="sub_button" name="button" value="注册" style="opacity: 0.7;" onclick="window.location.href='register.jsp'">
-						</label>
-					</div>
-				</form>
+	<div class="cont-main clearfix">
+		<div class="index-tab">
+			<div class="index-slide-nav">
+				<a href="index.jsp" class="active">登录</a>
+				<a href="register.jsp">注册</a>
+				<div class="slide-bar"></div>
 			</div>
-		<!--login_padding  Sign up end-->
-		</div><!--login_boder end-->
-	</div><!--login_m end-->
-	<br> <br>
-	<p align="center"> More Templates <a href="" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="" title="网页模板" target="_blank">网页模板</a></p>
+		</div>
 
-</body>
-<script type="text/javascript"> 
+		<form class="login form" action="login.do" method="post" accept-charset="utf-8" onsubmit="return checkForm(this)">
+			<div class="group">
+				<div class="group-ipt email">
+					<input type="phone" name="phone" id="phone" class="ipt" placeholder="手机号码" value="${cookie.u.value}" required>
+					<span class="errorTip">${phoneNull}</span>
+				</div>
+				<div class="group-ipt password">
+					<input type="password" name="password" id="password" class="ipt" value="${cookie.p.value}" placeholder="输入您的登录密码" required>
+					<span class="errorTip">${msg}</span>
+				</div>
+				<div class="group-ipt verify">
+					<input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
+					<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
+				</div>
+			</div>
+			<div class="button">
+				<button type="submit" class="btn login-btn register-btn" id="button">登录</button>
+			</div>
+
+			<div class="remember clearfix">
+				<label class="remember-me">
+					<span class="icon"><span class="zt"></span></span>
+					<input type="checkbox" name="rempwd" id="remember-me" class="remember-mecheck" value="1">记住我</label>
+				<label class="forgot-password">
+					<a href="updatePw.jsp">忘记密码？</a>
+				</label>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+<div class="footer">
+	<p>千言万语 - Thousands of Words</p>
+	<p>Designed By ZengRong & <a href="zrong.me">zrong.me</a> 2016</p>
+</div>
+
+<script src='js/particles.js' type="text/javascript"></script>
+<script src='js/background.js' type="text/javascript"></script>
+<script src='js/jquery.min.js' type="text/javascript"></script>
+<script src='js/layer/layer.js' type="text/javascript"></script>
+<script src='js/index.js' type="text/javascript"></script>
+<script>
 	function url(){
 		var str = "${cookie.u.value}";
 		var newstr = decodeURI(str);
-		document.getElementById("username").value = newstr;
+		document.getElementById("phone").value = newstr;
 	}
-</script>
-<script type="text/javascript">
+
 	function checkForm(){
-		if(this.username.value == ''){
-			alert("用户名不能为空");
+		if(this.phone.value == ''){
+			alert("手机号不能为空");
 			return false;
 		}else if(this.userpwd.value == ''){
 			alert("密码不能为空");
@@ -61,6 +83,26 @@
 		}
 		return true;
 	}
-
 </script>
+<script>
+	$('.imgcode').hover(function(){
+		layer.tips("看不清？点击更换", '.verify', {
+			time: 6000,
+			tips: [2, "#3c3c3c"]
+		})
+	},function(){
+		layer.closeAll('tips');
+	}).click(function(){
+		$(this).attr('src','http://zrong.me/home/index/imgcode?id=' + Math.random());
+	});
+	$("#remember-me").click(function(){
+		var n = document.getElementById("remember-me").checked;
+		if(n){
+			$(".zt").show();
+		}else{
+			$(".zt").hide();
+		}
+	});
+</script>
+</body>
 </html>
