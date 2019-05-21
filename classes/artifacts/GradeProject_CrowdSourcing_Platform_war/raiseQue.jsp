@@ -49,7 +49,7 @@
         <a href="main.do" class="logo"></a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
-        <a href="" class="nav">高分悬赏</a>
+        <a href="scoreQue.to" class="nav">高分悬赏</a>
         <a href="" class="nav">我的问题</a>
         <div class="user">
             <%--<a href="" class="log">登录</a>--%>

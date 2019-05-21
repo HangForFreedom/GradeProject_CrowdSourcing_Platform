@@ -1226,6 +1226,11 @@ height:auto;
   color:#FFF;
 }
 
+.pageType .pagination li .active{
+	background-color:#69BB20;
+	color:#FFF;
+}
+
 .pageType .pagination li dl{
   display:block;
   height:40px;

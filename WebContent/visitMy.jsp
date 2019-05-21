@@ -19,8 +19,8 @@
         <a href="main.do" class="logo"></a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
-        <a href="" class="nav">高分悬赏</a>
-        <a href="" class="nav">我的问题</a>
+        <a href="scoreQue.to" class="nav">高分悬赏</a>
+        <a href="myQue.to" class="nav">我的问题</a>
         <div class="user">
             <!-- <a href="" class="log">登录</a>
             <a href="" class="log">注册</a> -->
@@ -106,37 +106,14 @@
                         <a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>
                     </div>
                 </div>
-                <%--<script type="text/javascript">--%>
-                    <%--$(function () {--%>
-                        <%--//设置显示的高度，单位px--%>
-                        <%--var slideHeight = 100;--%>
-                        <%--var id = ${ansb.ansid};--%>
-                        <%--var defHeight = $('#wrap'+id).height();--%>
-                        <%--if (defHeight >= slideHeight) {--%>
-                            <%--$('#wrap'+id).css('height', slideHeight + 'px');--%>
-                            <%--$('#read-more'+id).append('<a href="#">展开全部</a>');--%>
-                            <%--$('#read-more'+id+' a').click(function () {--%>
-                                <%--var curHeight = $('#wrap'+id).height();--%>
-                                <%--if (curHeight == slideHeight) {--%>
-                                    <%--$('#wrap'+id).animate({--%>
-                                        <%--height: defHeight--%>
-                                    <%--}, "normal");--%>
-                                    <%--$('#read-more'+id+' a').html('收起');--%>
-                                    <%--$('#gradient'+id).fadeOut();--%>
-                                <%--} else {--%>
-                                    <%--$('#wrap'+id).animate({--%>
-                                        <%--height: slideHeight--%>
-                                    <%--}, "normal");--%>
-                                    <%--$('#read-more'+id+' a').html('展开全部');--%>
-                                    <%--$('#gradient'+id).fadeIn();--%>
-                                <%--}--%>
-                                <%--return false;--%>
-                            <%--});--%>
-                        <%--}else{--%>
-                            <%--$('#gradient').hide();--%>
-                        <%--}--%>
-                    <%--});--%>
-                <%--</script>--%>
+                <script>
+                    if(agids.contains(String(${ansb.ansid}))){
+                        $('#divAgree'+ansid).addClass('FabulousActive');
+                    }
+                    if(disagids.contains(String(${ansb.ansid}))){
+                        $('#divDisagree'+ansid).addClass('FabulousActive');
+                    }
+                </script>
             </c:forEach>
             <!---AnswerItemList E--->
 

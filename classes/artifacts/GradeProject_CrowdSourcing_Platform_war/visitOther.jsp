@@ -19,8 +19,8 @@
         <a href="main.do" class="logo"></a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
-        <a href="" class="nav">高分悬赏</a>
-        <a href="" class="nav">我的问题</a>
+        <a href="scoreQue.to" class="nav">高分悬赏</a>
+        <a href="myQue.to" class="nav">我的问题</a>
         <div class="user">
             <a href="" class="log">个人中心</a>
             <a href="logout.do" class="log">注销</a>
@@ -104,6 +104,14 @@
                         <%--<a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>--%>
                     </div>
                 </div>
+                <script>
+                    if(agids.contains(String(${ansb.ansid}))){
+                        $('#divAgree'+ansid).addClass('FabulousActive');
+                    }
+                    if(disagids.contains(String(${ansb.ansid}))){
+                        $('#divDisagree'+ansid).addClass('FabulousActive');
+                    }
+                </script>
             </c:forEach>
             <!---AnswerItemList E--->
 
@@ -268,7 +276,6 @@
         else
         {//该回答未被顶过
             //ignored
-            $('#divAgree'+ansid).addClass('FabulousActive');
         }
 
         $.ajax({
@@ -292,7 +299,6 @@
         else
         {//该回答未被顶过
             //ignored
-            $('#divAgree'+ansid).addClass('FabulousActive');
         }
 
         $.ajax({

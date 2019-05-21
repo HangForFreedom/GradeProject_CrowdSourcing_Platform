@@ -3,7 +3,9 @@ package com.gradp.dao;
 import com.gradp.bean.AnswerBean;
 import com.gradp.bean.QuestionBean;
 import com.gradp.util.DBUtil;
+import com.gradp.util.EmojiUtil;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,22 +18,68 @@ public class QuestionDaoImpl {
     DBUtil db = new DBUtil();
 
     /**
-     * 查询所有问题及其信息
+     * 查询所有问题
      * */
     public List<QuestionBean> queryAllQuestion(){
-        String sql = "select question.*, u.username, u.role from question left join user u on u.userid=question.userid order by question.queid desc";
+        List<QuestionBean> quebs = new ArrayList<>();
+        String sql = "select question.*, u.username, u.role from question left join user u on u.userid=question.userid order by time desc";
         //lists代表查询出来的所有微博信息
         List<Map<String, String>> lists = db.query(sql, null);
         //创建一个List<QuestionBean>用于装在所有微博信息
-        List<QuestionBean> quebs = new ArrayList<>();
         for (Map<String, String> q : lists){
             QuestionBean queb = new QuestionBean();
             //引号里的对应表中的列名
             queb.setQueid(Integer.parseInt(q.get("queid")));
             if (q.get("content")=="" || q.get("content")==null){
                 queb.setContent("");
+            }else{
+                try {
+                    queb.setContent(EmojiUtil.stringToEmoji(q.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
             }
+            queb.setTitle(q.get("title"));
+            queb.setContent(q.get("content"));
+            queb.setTime(q.get("time"));
+            queb.setImage(q.get("image"));
+            queb.setUserid(Integer.parseInt(q.get("userid")));
+            queb.setUsername(q.get("username"));
+            queb.setRole(q.get("role"));
+            queb.setScore(Integer.parseInt(q.get("score")));
+            queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
 
+            quebs.add(queb);
+        }
+        return quebs;
+    }
+
+    /**
+     * 查询所有问题（积分排序）
+     * */
+    public List<QuestionBean> queryAllQuestionOrderScore(int page, int pageSize){
+        List<QuestionBean> quebs = new ArrayList<>();
+        int start = 0;
+        if (page>0){
+            start = (page - 1) * pageSize;
+        }
+        String sql = "select question.*, u.username, u.role from question left join user u on u.userid=question.userid order by score desc LIMIT " + start + "," + pageSize;
+        //lists代表查询出来的所有微博信息
+        List<Map<String, String>> lists = db.query(sql, null);
+        //创建一个List<QuestionBean>用于装在所有微博信息
+        for (Map<String, String> q : lists){
+            QuestionBean queb = new QuestionBean();
+            //引号里的对应表中的列名
+            queb.setQueid(Integer.parseInt(q.get("queid")));
+            if (q.get("content")=="" || q.get("content")==null){
+                queb.setContent("");
+            }else{
+                try {
+                    queb.setContent(EmojiUtil.stringToEmoji(q.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
+            }
             queb.setTitle(q.get("title"));
             queb.setContent(q.get("content"));
 
@@ -45,7 +93,6 @@ public class QuestionDaoImpl {
 
             quebs.add(queb);
         }
-
         return quebs;
     }
 
@@ -63,11 +110,15 @@ public class QuestionDaoImpl {
             queb.setQueid(Integer.parseInt(q.get("queid")));
             if (q.get("content")=="" || q.get("content")==null){
                 queb.setContent("");
+            }else{
+                try {
+                    queb.setContent(EmojiUtil.stringToEmoji(q.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
             }
-
             queb.setTitle(q.get("title"));
             queb.setContent(q.get("content"));
-
             queb.setTime(q.get("time"));
             queb.setImage(q.get("image"));
             queb.setUserid(Integer.parseInt(q.get("userid")));
@@ -85,21 +136,29 @@ public class QuestionDaoImpl {
     /**
      * 根据用户名查询问题表中内容
      * */
-    public List<QuestionBean> queryQustionByUsername(String username){
-        String sql = "SELECT question.*, u.username, u.role from question LEFT JOIN user u ON u.userid=question.userid WHERE u.username=? order by question.queid desc";
+    public List<QuestionBean> queryQustionByUsername(int page, int pageSize, String username){
+        List<QuestionBean> quebs = new ArrayList<>();
+        int start = 0;
+        if (page>0){
+            start = (page - 1) * pageSize;
+        }
+        String sql = "SELECT question.*, u.username, u.role from question LEFT JOIN user u ON u.userid=question.userid WHERE u.username=? ORDER BY time desc LIMIT " + start + "," + pageSize;
         Object[] obj = {username};
         List<Map<String, String>> lists = db.query(sql, obj);
-        List<QuestionBean> quebs = new ArrayList<>();
         for (Map<String, String> q : lists){
             QuestionBean queb = new QuestionBean();
             queb.setQueid(Integer.parseInt(q.get("queid")));
             if (q.get("content")=="" || q.get("content")==null){
                 queb.setContent("");
+            }else{
+                try {
+                    queb.setContent(EmojiUtil.stringToEmoji(q.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
             }
-
             queb.setTitle(q.get("title"));
             queb.setContent(q.get("content"));
-
             queb.setTime(q.get("time"));
             queb.setImage(q.get("image"));
             queb.setUserid(Integer.parseInt(q.get("userid")));
@@ -121,7 +180,6 @@ public class QuestionDaoImpl {
         String sql = "SELECT count(agid) FROM agree WHERE ansid=?";
         Object[] obj = {ansid};
         List<Map<String, String>> lists = db.query(sql, obj);
-
         if (lists.size() == 0){
             return 0;
         }
@@ -135,7 +193,6 @@ public class QuestionDaoImpl {
         String sql = "SELECT count(disagid) FROM disagree WHERE ansid=?";
         Object[] obj = {ansid};
         List<Map<String, String>> lists = db.query(sql, obj);
-
         if (lists.size() == 0){
             return 0;
         }
@@ -149,7 +206,6 @@ public class QuestionDaoImpl {
         String sql = "SELECT count(ansid) FROM answer WHERE queid=?";
         Object[] obj = {queid};
         List<Map<String, String>> lists = db.query(sql, obj);
-
         if (lists.size() == 0){
             return 0;
         }
@@ -162,7 +218,6 @@ public class QuestionDaoImpl {
     public List<AnswerBean> queryAnswerById(int queid){
         String sql = "SELECT * From answer WHERE queid=? ORDER BY solveFlag desc";
         Object[] obj = {queid};
-
         List<Map<String, String>> lists = db.query(sql, obj);
         List<AnswerBean> ansbs = new ArrayList<>();
         for (Map<String, String> m : lists){
@@ -269,4 +324,63 @@ public class QuestionDaoImpl {
         List<Map<String, String>> lists = db.query(sql, obj);
         return lists.get(0).get("solveFlag");
     }
+
+
+    /***** 实现分页功能 *****/
+
+    public List<QuestionBean> getRecords(int page, int pageSize){
+        //创建一个List<QuestionBean>用于装在所有微博信息
+        List<QuestionBean> quebs = new ArrayList<>();
+        int start = 0;
+        if (page>0){
+            start = (page - 1) * pageSize;
+        }
+        String sql = "SELECT * FROM question ORDER BY time DESC LIMIT " + start + ","
+                + pageSize;
+        //lists代表查询出来的所有微博信息
+        List<Map<String, String>> lists = db.query(sql, null);
+        for (Map<String, String> q : lists){
+            QuestionBean queb = new QuestionBean();
+            //引号里的对应表中的列名
+            queb.setQueid(Integer.parseInt(q.get("queid")));
+            if (q.get("content")=="" || q.get("content")==null){
+                queb.setContent("");
+            }else{
+                try {
+                    queb.setContent(EmojiUtil.stringToEmoji(q.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
+            }
+            queb.setTitle(q.get("title"));
+            queb.setTime(q.get("time"));
+            queb.setImage(q.get("image"));
+            queb.setUserid(Integer.parseInt(q.get("userid")));
+            queb.setUsername(q.get("username"));
+            queb.setRole(q.get("role"));
+            queb.setScore(Integer.parseInt(q.get("score")));
+            queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+
+            quebs.add(queb);
+        }
+        return quebs;
+    }
+
+    /* 表中记录总数 **/
+    public String getTotal(){
+        String sql = "SELECT count(*) AS total FROM question";
+        List<Map<String, String>> lists = db.query(sql, null);
+        if (lists.size()!=0){
+            return lists.get(0).get("total");
+        }
+        return null;
+    }
+
+    /* 总页数 */
+    public int totalPages(int pageSize){
+        int total = Integer.parseInt(getTotal());
+        int totalPages = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
+        return totalPages;
+    }
+
 }

@@ -1,4 +1,6 @@
 <%@ page import="com.gradp.bean.QuestionBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -19,11 +21,9 @@
         <a href="main.do" class="logo">千言万语</a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
-        <a href="" class="nav">高分悬赏</a>
-        <a href="" class="nav">我的问题</a>
+        <a href="scoreQue.to" class="nav">高分悬赏</a>
+        <a href="myQue.to" class="nav">我的问题</a>
         <div class="user">
-            <!-- <a href="" class="log">登录</a>
-            <a href="" class="log">注册</a> -->
             <a href="" class="log">个人中心</a>
             <a href="logout.do" class="log">注销</a>
         </div>
@@ -91,35 +91,47 @@
                 </div>
             </div>
         </c:forEach>
-        <!---itemlist E--->
-        <!---itemlist S--->
-        <%--<div class="AskItemList">--%>
-            <%--<div class="top">--%>
-                <%--<div class="info">--%>
-                    <%--<span style="color:#666;">2小时前&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">xiezhengyi1986</a><span>&nbsp;的提问</span>--%>
-                    <%--<a href="vist.html" class="title">如何在dxf文件中添加新图层及在新添图层中添加实体信息？</a>--%>
-                <%--</div>--%>
-                <%--<div class="da">--%>
-                    <%--<span><em>24</em><dl>已有回答</dl></span>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="desc">--%>
-                <%--<img src="images/1.jpg" class="cover">--%>
-                <%--<div class="c">拦截所有的浏览器请求 access="ROLE_ADMIN" 只有ROLE_ADMIN角色的用才可以访问 规则角色名必须以ROLE_开头 为啥都得以ROLE_开头 还必须得大写 我试了小写role都不..--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="tags">--%>
-                <%--<a href="">html</a>--%>
-                <%--<div class="share_bar_con">--%>
-                	<%--<span>--%>
-                    	<%--<dl>浏览量</dl><em>(16)</em><i>|</i>--%>
-                        <%--<dl>点赞</dl><em class="cur">(16)</em><i>|</i>--%>
-                        <%--<dl>收藏</dl><em class="cur">(8)</em>--%>
-                    <%--</span>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <!---itemlist E--->
+
+        <%
+            Object obj = request.getAttribute("totalPage");
+            String totalPage = obj.toString();
+            List<Integer> pageList = new ArrayList<>();
+            int pageNum =0;
+            for (int i=1;i<=Integer.parseInt(totalPage); i++){
+                pageNum += 1;
+                pageList.add(pageNum);
+            }
+        %>
+        <div class="pageType">
+            <ul class="pagination">
+                <li class="disabled"><a href="main.do?page=1">首页</a></li>
+                <c:forEach items="<%=pageList%>" var="pageNum">
+                    <li><a id="pageNum${pageNum}" href="main.do?page=${pageNum}">${pageNum}</a></li>
+                </c:forEach>
+                <li><a href="main.do?page=${totalPage}">尾页</a></li>
+                <li class='pageRemark'>共<b>${totalPage}</b>页 <b>${queSum}</b>条数据</li>
+            </ul>
+        </div>
+        <script>
+            $(function () {
+                var pageNum = parseInt(GetRequest().page);
+                $('#pageNum'+pageNum).addClass("active");
+            });
+            //获取url中"?"符后的字串
+            function GetRequest() {
+                var url = location.search;
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for(var i = 0; i < strs.length; i ++) {
+                        theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                    }
+                }
+                //返回的是一个对象
+                return theRequest;
+            }
+        </script>
     </div>
 
     <div class="amRight">
@@ -178,15 +190,8 @@
                     <p>&copy; 1999-2019 江苏乐知网络技术有限公司江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有</p>
                 </div>
             </div>
-
         </div>
-
-
-
     </div>
-
-
-
 </div>
 
 

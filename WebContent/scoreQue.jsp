@@ -1,3 +1,4 @@
+<%@ page import="com.gradp.bean.QuestionBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -35,6 +36,7 @@
 </header>
 
 
+
 <div class="ask_main">
 
     <div class="amLeft" id="floatLeft">
@@ -63,7 +65,7 @@
                 <div class="top">
                     <div class="info">
                         <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
-                        <a href="vist.html" class="title">${queb.title}</a>
+                        <a href="visitOther.do?queid=${queb.queid}" class="title">${queb.title}</a>
                     </div>
                     <div class="da">
                         <span><em>${queb.anssum2que}</em><dl>已有回答</dl></span>
@@ -102,11 +104,11 @@
         %>
         <div class="pageType">
             <ul class="pagination">
-                <li class="disabled"><a href="myQue.to?page=1">首页</a></li>
+                <li class="disabled"><a href="scoreQue.to?page=1">首页</a></li>
                 <c:forEach items="<%=pageList%>" var="pageNum">
-                    <li><a id="pageNum${pageNum}" href="myQue.to?page=${pageNum}">${pageNum}</a></li>
+                    <li><a id="pageNum${pageNum}" href="scoreQue.to?page=${pageNum}">${pageNum}</a></li>
                 </c:forEach>
-                <li><a href="myQue.to?page=${totalPage}">尾页</a></li>
+                <li><a href="scoreQue.to?page=${totalPage}">尾页</a></li>
                 <li class='pageRemark'>共<b>${totalPage}</b>页 <b>${queSum}</b>条数据</li>
             </ul>
         </div>
@@ -191,7 +193,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script type="text/javascript">

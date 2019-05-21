@@ -1,3 +1,4 @@
+<%@ page import="com.gradp.bean.QuestionBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,6 +24,8 @@
         <a href="scoreQue.to" class="nav">高分悬赏</a>
         <a href="myQue.to" class="nav">我的问题</a>
         <div class="user">
+            <!-- <a href="" class="log">登录</a>
+            <a href="" class="log">注册</a> -->
             <a href="" class="log">个人中心</a>
             <a href="logout.do" class="log">注销</a>
         </div>
@@ -33,6 +36,7 @@
 
     </div>
 </header>
+
 
 
 <div class="ask_main">
@@ -63,7 +67,7 @@
                 <div class="top">
                     <div class="info">
                         <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
-                        <a href="vist.html" class="title">${queb.title}</a>
+                        <a href="visitOther.do?queid=${queb.queid}" class="title">${queb.title}</a>
                     </div>
                     <div class="da">
                         <span><em>${queb.anssum2que}</em><dl>已有回答</dl></span>
@@ -102,11 +106,21 @@
         %>
         <div class="pageType">
             <ul class="pagination">
-                <li class="disabled"><a href="myQue.to?page=1">首页</a></li>
+                <li class="disabled"><a href="quePage.to?page=1">首页</a></li>
+
+                <%--<c:if test="${prePage > 0}">--%>
+                    <%--<li><a href="quePage.to?page=${prePage}">上一页</a></li>--%>
+                <%--</c:if>--%>
+
                 <c:forEach items="<%=pageList%>" var="pageNum">
-                    <li><a id="pageNum${pageNum}" href="myQue.to?page=${pageNum}">${pageNum}</a></li>
+                    <li><a id="pageNum${pageNum}" href="quePage.to?page=${pageNum}">${pageNum}</a></li>
                 </c:forEach>
-                <li><a href="myQue.to?page=${totalPage}">尾页</a></li>
+
+                <%--<c:if test="${nextPage <= totalPage}">--%>
+                    <%--<li><a class="" href="quePage.to?page=${nextPage}">下一页</a></li>--%>
+                <%--</c:if>--%>
+
+                <li><a href="quePage.to?page=${totalPage}">尾页</a></li>
                 <li class='pageRemark'>共<b>${totalPage}</b>页 <b>${queSum}</b>条数据</li>
             </ul>
         </div>
@@ -130,6 +144,35 @@
                 return theRequest;
             }
         </script>
+        <!---itemlist E--->
+        <!---itemlist S--->
+        <%--<div class="AskItemList">--%>
+        <%--<div class="top">--%>
+        <%--<div class="info">--%>
+        <%--<span style="color:#666;">2小时前&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">xiezhengyi1986</a><span>&nbsp;的提问</span>--%>
+        <%--<a href="vist.html" class="title">如何在dxf文件中添加新图层及在新添图层中添加实体信息？</a>--%>
+        <%--</div>--%>
+        <%--<div class="da">--%>
+        <%--<span><em>24</em><dl>已有回答</dl></span>--%>
+        <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="desc">--%>
+        <%--<img src="images/1.jpg" class="cover">--%>
+        <%--<div class="c">拦截所有的浏览器请求 access="ROLE_ADMIN" 只有ROLE_ADMIN角色的用才可以访问 规则角色名必须以ROLE_开头 为啥都得以ROLE_开头 还必须得大写 我试了小写role都不..--%>
+        <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="tags">--%>
+        <%--<a href="">html</a>--%>
+        <%--<div class="share_bar_con">--%>
+        <%--<span>--%>
+        <%--<dl>浏览量</dl><em>(16)</em><i>|</i>--%>
+        <%--<dl>点赞</dl><em class="cur">(16)</em><i>|</i>--%>
+        <%--<dl>收藏</dl><em class="cur">(8)</em>--%>
+        <%--</span>--%>
+        <%--</div>--%>
+        <%--</div>--%>
+        <%--</div>--%>
+        <!---itemlist E--->
     </div>
 
     <div class="amRight">
@@ -188,10 +231,16 @@
                     <p>&copy; 1999-2019 江苏乐知网络技术有限公司江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有</p>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
 
 
 <script type="text/javascript">

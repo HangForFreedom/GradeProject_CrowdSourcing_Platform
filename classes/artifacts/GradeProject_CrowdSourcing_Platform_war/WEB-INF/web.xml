@@ -66,4 +66,12 @@
         <servlet-name>answerOther</servlet-name>
         <url-pattern>*.go</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PagesServlet</servlet-name>
+        <servlet-class>com.gradp.servlet.PagesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PagesServlet</servlet-name>
+        <url-pattern>*.to</url-pattern>
+    </servlet-mapping>
 </web-app>

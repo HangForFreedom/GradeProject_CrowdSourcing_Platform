@@ -15,10 +15,17 @@ public class QuestionBiz {
     QuestionDaoImpl queDao = new QuestionDaoImpl();
 
     /**
-     * 查询所有问题及其信息
+     * 查询所有问题
      * */
     public List<QuestionBean> queryAllQuestion(){
         return queDao.queryAllQuestion();
+    }
+
+    /**
+     * 查询所有问题（积分排序）
+     * */
+    public List<QuestionBean> queryAllQuestionOrderScore(int page, int pageSize){
+        return queDao.queryAllQuestionOrderScore(page, pageSize);
     }
 
     public List<QuestionBean> querySingleQuestion(int queid){
@@ -28,8 +35,8 @@ public class QuestionBiz {
     /**
      * 根据用户名查询问题表中内容
      * */
-    public List<QuestionBean> queryQustionByUsername(String username){
-        return queDao.queryQustionByUsername(username);
+    public List<QuestionBean> queryQustionByUsername(int page, int pageSize, String username){
+        return queDao.queryQustionByUsername(page, pageSize, username);
     }
 
     /**
@@ -93,5 +100,15 @@ public class QuestionBiz {
      * */
     public String queryQueSolveById(int queid){
         return queDao.queryQueSolveById(queid);
+    }
+
+    /******** 分页功能 *********/
+    public List<QuestionBean> getRecords(int page, int pageSize){
+        return queDao.getRecords(page, pageSize);
+    }
+
+    /* 总页数 */
+    public int totalPages(int pageSize){
+        return queDao.totalPages(pageSize);
     }
 }

@@ -7,11 +7,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b7f16f2-4d10-420b-97b2-6d7cc6eed435" name="Default Changelist" comment=" 1.发布问题功能并且扣除积分功能&#10; 2.顶、踩功能&#10; 3.采纳获取积分功能&#10; 4.回答问题功能">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
-    <list id="c4ef1df7-317d-4fe1-af54-d8c3b2b2e04d" name="ignored" comment="ignored">
+      <change afterPath="$PROJECT_DIR$/WebContent/pageTest.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebContent/scoreQue.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/gradp/servlet/PagesServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/myQue.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/myQue.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/raiseQue.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/raiseQue.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/visitMy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/visitMy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/visitOther.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/visitOther.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/gradp/biz/QuestionBiz.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/gradp/biz/QuestionBiz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/gradp/dao/QuestionDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/gradp/dao/QuestionDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/gradp/servlet/MainServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/gradp/servlet/MainServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/classes/com/gradp/biz/QuestionBiz.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/classes/com/gradp/biz/QuestionBiz.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/classes/com/gradp/dao/QuestionDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/classes/com/gradp/dao/QuestionDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/classes/com/gradp/servlet/MainServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/classes/com/gradp/servlet/MainServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/myQue.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/myQue.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/raiseQue.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/raiseQue.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/visitMy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/visitMy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/visitOther.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/GradeProject_CrowdSourcing_Platform_war/visitOther.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java" afterDir="false" />
     </list>
+    <list id="c4ef1df7-317d-4fe1-af54-d8c3b2b2e04d" name="ignored" comment="ignored" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,22 +63,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/RegisterServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="54" column="47" lean-forward="true" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
+            <state relative-caret-position="289">
+              <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -62,12 +74,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="86" column="35" lean-forward="true" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
+            <state relative-caret-position="170">
+              <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#379#380#0" expanded="true" />
-                <element signature="e#427#428#0" expanded="true" />
+                <element signature="e#375#376#0" expanded="true" />
+                <element signature="e#403#404#0" expanded="true" />
                 <element signature="e#490#491#0" expanded="true" />
                 <element signature="e#546#547#0" expanded="true" />
                 <element signature="e#1326#1327#0" expanded="true" />
@@ -80,7 +92,52 @@
                 <element signature="e#1840#1841#0" expanded="true" />
                 <element signature="e#1931#1932#0" expanded="true" />
                 <element signature="e#1959#1960#0" expanded="true" />
+                <element signature="e#2086#2087#0" expanded="true" />
+                <element signature="e#2127#2128#0" expanded="true" />
+                <element signature="e#2194#2195#0" expanded="true" />
+                <element signature="e#2222#2223#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/PagesServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-175">
+              <caret line="127" column="82" selection-start-line="127" selection-start-column="82" selection-end-line="127" selection-end-column="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/myQue.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="104" column="54" selection-start-line="104" selection-start-column="54" selection-end-line="104" selection-end-column="54" />
+              <caret line="106" column="64" selection-start-line="106" selection-start-column="64" selection-end-line="106" selection-end-column="64" />
+              <caret line="108" column="37" selection-start-line="108" selection-start-column="37" selection-end-line="108" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/scoreQue.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="186" column="48" selection-start-line="186" selection-start-column="48" selection-end-line="186" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/pageTest.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -88,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="191">
+              <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,7 +158,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/UserDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="164">
-              <caret line="70" column="4" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
+              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -109,8 +166,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/AnswerDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+            <state relative-caret-position="70">
+              <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,8 +178,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gradp/biz/UserBiz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+            <state relative-caret-position="-1071">
+              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
               <folding>
                 <element signature="e#430#431#0" expanded="true" />
                 <element signature="e#471#472#0" expanded="true" />
@@ -138,17 +195,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="173" column="50" selection-start-line="173" selection-start-column="50" selection-end-line="173" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="861" column="1" lean-forward="true" selection-start-line="861" selection-start-column="1" selection-end-line="861" selection-end-column="1" />
+            <state relative-caret-position="2652">
+              <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -169,7 +217,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/gradp/bean/UserBean.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+              <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
               <folding>
                 <element signature="e#96#97#0" expanded="true" />
                 <element signature="e#116#117#0" expanded="true" />
@@ -179,11 +227,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/raiseQue.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="107" column="61" lean-forward="true" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="61" />
+            <state relative-caret-position="210">
+              <caret line="81" column="52" selection-start-line="81" selection-start-column="52" selection-end-line="81" selection-end-column="52" />
               <folding>
                 <element signature="n#style#0;n#span#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -191,11 +239,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/visitOther.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="209" column="38" selection-start-line="209" selection-start-column="38" selection-end-line="209" selection-end-column="38" />
+            <state relative-caret-position="120">
+              <caret line="109" column="21" selection-start-line="109" selection-start-column="21" selection-end-line="109" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -205,18 +253,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="318">
               <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/OperateAsnwerServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-94">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -243,8 +279,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/visitMy.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2142">
-              <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
+            <state relative-caret-position="283">
+              <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -252,8 +288,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/LoginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="106" column="9" lean-forward="true" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="9" />
+            <state relative-caret-position="216">
+              <caret line="77" column="14" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -264,8 +300,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="236" column="27" lean-forward="true" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
+            <state relative-caret-position="98">
+              <caret line="330" column="36" selection-start-line="330" selection-start-column="36" selection-end-line="330" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -278,19 +314,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>c</find>
-      <find>anssum2que</find>
-      <find>浏览量</find>
-      <find>submit</find>
-      <find>session</find>
-      <find>session.set</find>
       <find>ansbs</find>
       <find>solved</find>
       <find>ansid</find>
@@ -315,6 +345,12 @@
       <find>visit</find>
       <find>bean</find>
       <find>answer.go</find>
+      <find>?</find>
+      <find>totalPage</find>
+      <find>myQue</find>
+      <find>quePage</find>
+      <find>高分</find>
+      <find>scoreQue.jsp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -328,7 +364,6 @@
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/src/com/gradp/bean/QuestionBean.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/util/EmojiUtil.java" />
-        <option value="$PROJECT_DIR$/WebContent/myQue.jsp" />
         <option value="$PROJECT_DIR$/WebContent/visit.jsp" />
         <option value="$PROJECT_DIR$/src/com/gradp/bean/AnswerBean.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/servlet/AgreeAnswer.java" />
@@ -346,21 +381,27 @@
         <option value="$PROJECT_DIR$/WebContent/updatePw.jsp" />
         <option value="$PROJECT_DIR$/src/com/gradp/servlet/UpdatePwServlet.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/servlet/RegisterServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/WebContent/index.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/raiseQue.jsp" />
         <option value="$PROJECT_DIR$/src/com/gradp/biz/UserBiz.java" />
-        <option value="$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/servlet/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/dao/UserDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/servlet/RaiseQueServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java" />
-        <option value="$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/com/gradp/servlet/VisitServlet.java" />
-        <option value="$PROJECT_DIR$/WebContent/visitOther.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/visitMy.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/main.jsp" />
+        <option value="$PROJECT_DIR$/src/com/gradp/servlet/QuePagesServlet.java" />
+        <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/WebContent/css/style.css" />
+        <option value="$PROJECT_DIR$/WebContent/raiseQue.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/main.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/pageTest.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/visitMy.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/visitOther.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/socerQue.jsp" />
+        <option value="$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java" />
+        <option value="$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java" />
+        <option value="$PROJECT_DIR$/WebContent/myQue.jsp" />
+        <option value="$PROJECT_DIR$/WebContent/scoreQue.jsp" />
+        <option value="$PROJECT_DIR$/src/com/gradp/servlet/PagesServlet.java" />
       </list>
     </option>
   </component>
@@ -377,11 +418,11 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="286" />
-    <option name="y" value="29" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="223" />
+    <option name="y" value="10" />
     <option name="width" value="1161" />
-    <option name="height" value="824" />
+    <option name="height" value="834" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -484,7 +525,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558421461633" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558444830861" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../allprojects/wendao-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -613,7 +654,7 @@
       <workItem from="1558138547648" duration="129052000" />
       <workItem from="1558364340808" duration="232000" />
       <workItem from="1558364609620" duration="4735000" />
-      <workItem from="1558397485873" duration="22804000" />
+      <workItem from="1558397485873" duration="43356000" />
     </task>
     <task id="LOCAL-00001" summary="无意义改动">
       <created>1558013935918</created>
@@ -633,7 +674,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210088000" />
+    <option name="totallyTimeSpent" value="230640000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -645,9 +686,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19580925" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20953757" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -658,8 +700,8 @@
       <window_info anchor="bottom" id="GitHub Pull Requests" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.055474453" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49855492" weight="0.055474453" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49855492" weight="0.10510949" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49855492" visible="true" weight="0.12992701" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49855492" weight="0.055474453" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329927" />
@@ -667,11 +709,11 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329927" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5014451" side_tool="true" weight="0.44963503" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.055474453" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.22627737" />
       <window_info anchor="bottom" id="Problems" order="12" weight="0.329927" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.329927" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="15" visible="true" weight="0.48467153" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.48467153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -780,83 +822,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/bean/QuestionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="116" column="16" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#307#308#0" expanded="true" />
-            <element signature="e#341#342#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-            <element signature="e#400#401#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#761#762#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#863#864#0" expanded="true" />
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#1268#1269#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-            <element signature="e#1335#1336#0" expanded="true" />
-            <element signature="e#1367#1368#0" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1974#1975#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/apache-tomcat-8.5.28/lib/servlet-api.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="290" selection-start-line="290" selection-end-line="290" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/js/jquery-3.2.1.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="12966" lean-forward="true" selection-start-line="1" selection-start-column="12966" selection-end-line="1" selection-end-column="12966" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="3620" column="4" selection-start-line="3620" selection-start-column="4" selection-end-line="3620" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/bean/DisagreeBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding>
-            <element signature="e#147#148#0" expanded="true" />
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#417#418#0" expanded="true" />
-            <element signature="e#458#459#0" expanded="true" />
-            <element signature="e#494#495#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/VisitMyServlet.java" />
     <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/AgreeAnswerServlet.java" />
     <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/DisagreeAnswerServlet.java" />
@@ -995,13 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/util/DBUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="103" column="68" lean-forward="true" selection-start-line="103" selection-start-column="68" selection-end-line="103" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/RegisterServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
@@ -1029,167 +987,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/LoginServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/util/DBUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="106" column="9" lean-forward="true" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="86" column="35" lean-forward="true" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
-            <element signature="e#427#428#0" expanded="true" />
-            <element signature="e#490#491#0" expanded="true" />
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-            <element signature="e#1464#1465#0" expanded="true" />
-            <element signature="e#1519#1520#0" expanded="true" />
-            <element signature="e#1610#1611#0" expanded="true" />
-            <element signature="e#1664#1665#0" expanded="true" />
-            <element signature="e#1780#1781#0" expanded="true" />
-            <element signature="e#1840#1841#0" expanded="true" />
-            <element signature="e#1931#1932#0" expanded="true" />
-            <element signature="e#1959#1960#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/RaiseQueServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="859">
-          <caret line="125" column="66" selection-start-line="125" selection-start-column="66" selection-end-line="125" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="70" column="4" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/VisitServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/visitMy.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2142">
-          <caret line="52" column="38" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/bean/UserBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-          <folding>
-            <element signature="e#96#97#0" expanded="true" />
-            <element signature="e#116#117#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/biz/UserBiz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding>
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#1713#1714#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/raiseQue.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="107" column="61" lean-forward="true" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#span#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="236" column="27" lean-forward="true" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/AnswerDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="54" column="47" lean-forward="true" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="173" column="50" selection-start-line="173" selection-start-column="50" selection-end-line="173" selection-end-column="50" />
+        <state relative-caret-position="1609">
+          <caret line="103" column="68" selection-start-line="103" selection-start-column="68" selection-end-line="103" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="861" column="1" lean-forward="true" selection-start-line="861" selection-start-column="1" selection-end-line="861" selection-end-column="1" />
+        <state relative-caret-position="245">
+          <caret line="1228" column="31" selection-start-line="1228" selection-start-column="31" selection-end-line="1228" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="164" column="11" selection-start-line="164" selection-start-column="11" selection-end-line="164" selection-end-column="11" />
+          <folding>
+            <element signature="e#6283#6284#0" expanded="true" />
+            <element signature="e#6351#6352#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="190">
-            <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <first_editor relative-caret-position="185">
+            <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
@@ -1209,10 +1036,196 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/bean/UserBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding>
+            <element signature="e#96#97#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/RaiseQueServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="859">
+          <caret line="125" column="66" selection-start-line="125" selection-start-column="66" selection-end-line="125" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/pageTest.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="103" column="27" selection-start-line="103" selection-start-column="27" selection-end-line="103" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/visitMy.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/myQue.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="104" column="54" selection-start-line="104" selection-start-column="54" selection-end-line="104" selection-end-column="54" />
+          <caret line="106" column="64" selection-start-line="106" selection-start-column="64" selection-end-line="106" selection-end-column="64" />
+          <caret line="108" column="37" selection-start-line="108" selection-start-column="37" selection-end-line="108" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/VisitServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/visitOther.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="209" column="38" selection-start-line="209" selection-start-column="38" selection-end-line="209" selection-end-column="38" />
+        <state relative-caret-position="120">
+          <caret line="109" column="21" selection-start-line="109" selection-start-column="21" selection-end-line="109" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/biz/UserBiz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding>
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1759#1760#0" expanded="true" />
+            <element signature="e#1877#1878#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/scoreQue.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="186" column="48" selection-start-line="186" selection-start-column="48" selection-end-line="186" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/AnswerDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="77" column="14" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/MainServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/biz/QuestionBiz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#403#404#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1372#1373#0" expanded="true" />
+            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="e#1519#1520#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1840#1841#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
+            <element signature="e#2086#2087#0" expanded="true" />
+            <element signature="e#2127#2128#0" expanded="true" />
+            <element signature="e#2194#2195#0" expanded="true" />
+            <element signature="e#2222#2223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/servlet/PagesServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-175">
+          <caret line="127" column="82" selection-start-line="127" selection-start-column="82" selection-end-line="127" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/gradp/dao/QuestionDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="330" column="36" selection-start-line="330" selection-start-column="36" selection-end-line="330" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/raiseQue.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="81" column="52" selection-start-line="81" selection-start-column="52" selection-end-line="81" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
