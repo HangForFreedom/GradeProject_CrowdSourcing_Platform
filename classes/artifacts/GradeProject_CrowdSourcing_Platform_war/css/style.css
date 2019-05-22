@@ -1170,22 +1170,79 @@ height:auto;
 	color:#FF4D4D;
 	font-weight: bold;
 }
-.AnswerItemList .fuInfo .Report{
-	display:block;
-	height:32px;
-	font:14px/32px 'microsoft yahei';
-	color:#666;
-	padding:0 15px;
-	border:1px solid #ccc;
-	margin-top:8px;
-	border-radius:4px;
-	float:right;
-	cursor:pointer;
-	transition-duration:0.2s;
+.AnswerItemList .fuInfo .dropdown {
+	position: relative;
 }
-.AnswerItemList .fuInfo .Report:hover{
-	background-color:#eaeaea;
-	color:#333;
+.AnswerItemList .fuInfo .caret {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	border-top: 4px dashed;
+	border-top: 4px solid\9;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+}
+.AnswerItemList .fuInfo .btn{
+	display: inline-block;
+	float: right;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	color: #333;
+	background-color: #fff;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.AnswerItemList .fuInfo .dropdown-menu {
+	position: absolute;
+	top: 33px;
+	right: 0;
+	z-index: 1000;
+	display: none;
+	/*min-width: 160px;*/
+    left: auto;
+    float: none;
+    min-width: 0px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.AnswerItemList .fuInfo .open>.dropdown-menu {
+	display: block;
+}
+.AnswerItemList .fuInfo .dropdown-menu>li>a {
+	display: block;
+	padding: 3px 20px;
+	text-decoration: none;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
 }
 
 

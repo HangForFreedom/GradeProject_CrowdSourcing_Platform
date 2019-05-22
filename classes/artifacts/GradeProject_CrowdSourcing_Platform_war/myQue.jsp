@@ -63,7 +63,7 @@
                 <div class="top">
                     <div class="info">
                         <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
-                        <a href="vist.html" class="title">${queb.title}</a>
+                        <a href="visitOther.do?queid=${queb.queid}" class="title">${queb.title}</a>
                     </div>
                     <div class="da">
                         <span><em>${queb.anssum2que}</em><dl>已有回答</dl></span>

@@ -1,6 +1,7 @@
 package com.gradp.biz;
 
 import com.gradp.bean.AgreeBean;
+import com.gradp.bean.AnswerBean;
 import com.gradp.bean.DisagreeBean;
 import com.gradp.dao.AnswerDaoImpl;
 
@@ -74,5 +75,16 @@ public class AnswerBiz {
      * */
     public List<DisagreeBean> queryDisagreeIsNullById(int ansid, int userid){
         return ansDao.queryDisagreeIsNullById(ansid, userid);
+    }
+
+    /**
+     * 根据userid查询该用户的所有回答，以及对应的问题信息
+     * */
+    public List<AnswerBean> queryAnswerAndQueByUserid(int page, int pageSize, int userid){
+        return ansDao.queryAnswerAndQueByUserid(page, pageSize, userid);
+    }
+
+    public int userToAnsTotalPages(int pageSize, int userid){
+        return ansDao.userToAnsTotalPages(pageSize, userid);
     }
 }

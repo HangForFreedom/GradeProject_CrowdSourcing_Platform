@@ -39,6 +39,11 @@ public class QuestionBiz {
         return queDao.queryQustionByUsername(page, pageSize, username);
     }
 
+    /* 回答总页数 */
+    public int ansTotalPages(int pageSize){
+        return queDao.ansTotalPages(pageSize);
+    }
+
     /**
      * 查询问题的点赞数
      * */
@@ -63,8 +68,8 @@ public class QuestionBiz {
     /**
      * 查询回答内容
      * */
-    public List<AnswerBean> queryAnswerById(int queid){
-        return queDao.queryAnswerById(queid);
+    public List<AnswerBean> queryAnswerById(int page, int pageSize, int queid){
+        return queDao.queryAnswerById(page, pageSize, queid);
     }
 
     /**
@@ -108,7 +113,9 @@ public class QuestionBiz {
     }
 
     /* 总页数 */
-    public int totalPages(int pageSize){
-        return queDao.totalPages(pageSize);
+    public int queTotalPages(int pageSize){
+        return queDao.queTotalPages(pageSize);
     }
+
+
 }

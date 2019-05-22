@@ -17,6 +17,36 @@ public class AnswerBean {
 
     private String image;
 
+    public String getQueTitle() {
+        return queTitle;
+    }
+
+    public void setQueTitle(String queTitle) {
+        this.queTitle = queTitle;
+    }
+
+    public int getQueScore() {
+        return queScore;
+    }
+
+    public void setQueScore(int queScore) {
+        this.queScore = queScore;
+    }
+
+    public int getQueSolveFlag() {
+        return queSolveFlag;
+    }
+
+    public void setQueSolveFlag(int queSolveFlag) {
+        this.queSolveFlag = queSolveFlag;
+    }
+
+    private String queTitle;
+
+    private int queScore;
+
+    private int queSolveFlag;
+
     public int getAgnum() {
         return agnum;
     }

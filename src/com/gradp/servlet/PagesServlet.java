@@ -72,7 +72,7 @@ public class PagesServlet extends HttpServlet {
             spage = "1";
         }
         int page = Integer.parseInt(spage);
-        int totalPage = quebz.totalPages(pageSize);
+        int totalPage = quebz.queTotalPages(pageSize);
 
         List<QuestionBean> quebs = quebz.queryQustionByUsername(page, pageSize, ub.getUsername());
         int queSum = quebs.size();
@@ -123,7 +123,7 @@ public class PagesServlet extends HttpServlet {
             spage = "1";
         }
         int page = Integer.parseInt(spage);
-        int totalPage = quebz.totalPages(pageSize);
+        int totalPage = quebz.queTotalPages(pageSize);
 
         List<QuestionBean> quebs = quebz.queryAllQuestionOrderScore(page, pageSize);
         int queSum = quebs.size();

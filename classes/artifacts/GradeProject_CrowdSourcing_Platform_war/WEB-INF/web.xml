@@ -74,4 +74,12 @@
         <servlet-name>PagesServlet</servlet-name>
         <url-pattern>*.to</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MyPageServlet</servlet-name>
+        <servlet-class>com.gradp.servlet.MyPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyPageServlet</servlet-name>
+        <url-pattern>/myPage.do</url-pattern>
+    </servlet-mapping>
 </web-app>

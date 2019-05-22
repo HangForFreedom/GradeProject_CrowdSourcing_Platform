@@ -61,14 +61,23 @@ public class VisitServlet extends HttpServlet {
         }
 
         UserBiz ubz = new UserBiz();
-
         //提出问题数量
         int quesum = ubz.queryQuestionById(ub.getUserid());
         //回答数量
         int anssum = ubz.queryAnswerById(ub.getUserid());
 
+        // 每页6条记录
+        int pageSize = 5;
+        String spage = req.getParameter("page");
+        if (spage == null || spage == ""){
+            spage = "1";
+        }
+        int page = Integer.parseInt(spage);
+        int totalPage = quebz.ansTotalPages(pageSize);
+
         //查询根据queid查询所有回答
-        List<AnswerBean> ansbs = quebz.queryAnswerById(Integer.parseInt(queid));
+        List<AnswerBean> ansbs = quebz.queryAnswerById(page, pageSize, Integer.parseInt(queid));
+        int ansSum = ansbs.size();
 
         UserBiz userbz = new UserBiz();
         List<Integer> agreedAnsList = userbz.queryAgreedAnsList(ub.getUserid());
@@ -87,7 +96,6 @@ public class VisitServlet extends HttpServlet {
         for (AnswerBean an : ansbs){
             Integer ansid = an.getAnsid();
             // req.setAttribute("ansid", ansid);
-
             //查询每条回答点赞数量
             int agnum = quebz.queryAgreeById(ansid);
             an.setAgnum(agnum);
@@ -102,7 +110,6 @@ public class VisitServlet extends HttpServlet {
                 req.setAttribute("solve", "已采纳");
                 req.setAttribute("solveansid", ansid);
             }
-
         }
         //查询每条问题回答数量
         int anssum2que = quebz.queryAnswerSumById(Integer.parseInt(queid));
@@ -111,6 +118,11 @@ public class VisitServlet extends HttpServlet {
         req.setAttribute("anssum", anssum);
         req.setAttribute("ansbs", ansbs);
         req.setAttribute("anssum2que", anssum2que);
+        req.setAttribute("page", page);
+        req.setAttribute("prePage", page-1);
+        req.setAttribute("nextPage", page+1);
+        req.setAttribute("totalPage", totalPage);
+        req.setAttribute("ansSum", ansSum);
 
         List<Integer> queidList = quebz.queryQueidListByUserid(ub.getUserid());
         boolean status = queidList.contains(Integer.parseInt(queid));

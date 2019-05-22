@@ -81,8 +81,6 @@ public class QuestionDaoImpl {
                 }
             }
             queb.setTitle(q.get("title"));
-            queb.setContent(q.get("content"));
-
             queb.setTime(q.get("time"));
             queb.setImage(q.get("image"));
             queb.setUserid(Integer.parseInt(q.get("userid")));
@@ -213,13 +211,17 @@ public class QuestionDaoImpl {
     }
 
     /**
-     * 查询回答内容
+     * 查询回答内容(添加分页)
      * */
-    public List<AnswerBean> queryAnswerById(int queid){
-        String sql = "SELECT * From answer WHERE queid=? ORDER BY solveFlag desc";
+    public List<AnswerBean> queryAnswerById(int page, int pageSize, int queid){
+        List<AnswerBean> ansbs = new ArrayList<>();
+        int start = 0;
+        if (page>0){
+            start = (page - 1) * pageSize;
+        }
+        String sql = "SELECT * From answer WHERE queid=? ORDER BY solveFlag desc LIMIT " + start + "," + pageSize;
         Object[] obj = {queid};
         List<Map<String, String>> lists = db.query(sql, obj);
-        List<AnswerBean> ansbs = new ArrayList<>();
         for (Map<String, String> m : lists){
             AnswerBean ansb = new AnswerBean();
             ansb.setAnsid(Integer.parseInt(m.get("ansid")));
@@ -238,10 +240,27 @@ public class QuestionDaoImpl {
         return ansbs;
     }
 
+    /* 表中记录总数 **/
+    private String getAnsTotal(){
+        String sql = "SELECT count(*) AS total FROM answer";
+        List<Map<String, String>> lists = db.query(sql, null);
+        if (lists.size()!=0){
+            return lists.get(0).get("total");
+        }
+        return null;
+    }
+
+    /* 总页数 */
+    public int ansTotalPages(int pageSize){
+        int total = Integer.parseInt(getAnsTotal());
+        int totalPages = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
+        return totalPages;
+    }
+
     /**
      * 根据用户id查询用户名
      * */
-    public String queryUserNameByUserId(int userid){
+    private String queryUserNameByUserId(int userid){
         String sql = "SELECT username FROM user where userid=?";
         Object[] obj = {userid};
         List<Map<String, String>> lists = db.query(sql, obj);
@@ -255,7 +274,7 @@ public class QuestionDaoImpl {
     /**
      * 根据用户id查询用户头像
      * */
-    public String queryRoleByUserId(int userid){
+    private String queryRoleByUserId(int userid){
         String sql = "SELECT role FROM user where userid=?";
         Object[] obj = {userid};
         List<Map<String, String>> lists = db.query(sql, obj);
@@ -263,7 +282,7 @@ public class QuestionDaoImpl {
         if (lists.size()!=0){
             return lists.get(0).get("role");
         }
-        return "/img/image.png";
+        return "img/image.png";
     }
 
     /**
@@ -335,7 +354,7 @@ public class QuestionDaoImpl {
         if (page>0){
             start = (page - 1) * pageSize;
         }
-        String sql = "SELECT * FROM question ORDER BY time DESC LIMIT " + start + ","
+        String sql = "select question.*, user.username, user.role from question left join user on user.userid=question.userid ORDER BY time DESC LIMIT " + start + ","
                 + pageSize;
         //lists代表查询出来的所有微博信息
         List<Map<String, String>> lists = db.query(sql, null);
@@ -367,7 +386,7 @@ public class QuestionDaoImpl {
     }
 
     /* 表中记录总数 **/
-    public String getTotal(){
+    public String getQueTotal(){
         String sql = "SELECT count(*) AS total FROM question";
         List<Map<String, String>> lists = db.query(sql, null);
         if (lists.size()!=0){
@@ -377,8 +396,8 @@ public class QuestionDaoImpl {
     }
 
     /* 总页数 */
-    public int totalPages(int pageSize){
-        int total = Integer.parseInt(getTotal());
+    public int queTotalPages(int pageSize){
+        int total = Integer.parseInt(getQueTotal());
         int totalPages = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
         return totalPages;
     }

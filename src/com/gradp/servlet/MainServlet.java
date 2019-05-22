@@ -43,7 +43,7 @@ public class MainServlet extends HttpServlet {
             spage = "1";
         }
         int page = Integer.parseInt(spage);
-        int totalPage = quebz.totalPages(pageSize);
+        int totalPage = quebz.queTotalPages(pageSize);
         List<QuestionBean> quebs = quebz.getRecords(page, pageSize);
         for (QuestionBean q : quebs){
             int queid = q.getQueid();

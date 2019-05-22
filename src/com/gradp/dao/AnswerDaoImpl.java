@@ -1,9 +1,12 @@
 package com.gradp.dao;
 
 import com.gradp.bean.AgreeBean;
+import com.gradp.bean.AnswerBean;
 import com.gradp.bean.DisagreeBean;
 import com.gradp.util.DBUtil;
+import com.gradp.util.EmojiUtil;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -122,5 +125,92 @@ public class AnswerDaoImpl {
             disagbs.add(disagb);
         }
         return disagbs;
+    }
+
+    /**
+     * 根据userid查询该用户的所有回答，以及对应的问题信息
+     * */
+    public List<AnswerBean> queryAnswerAndQueByUserid(int page, int pageSize, int userid){
+        List<AnswerBean> ansbs = new ArrayList<>();
+        int start = 0;
+        if (page>0){
+            start = (page - 1) * pageSize;
+        }
+        String sql = "SELECT answer.*, question.queid, question.title, question.solveFlag, question.score\n" +
+                "FROM answer LEFT JOIN question ON question.queid=answer.queid \n" +
+                "WHERE answer.userid=? ORDER BY answer.time DESC LIMIT " + start + "," + pageSize;
+        Object[] obj = {userid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+        for (Map<String, String> m : lists){
+            AnswerBean ansb = new AnswerBean();
+            ansb.setAnsid(Integer.parseInt(m.get("ansid")));
+            if (m.get("content")=="" || m.get("content")==null){
+                ansb.setContent("");
+            }else {
+                try {
+                    ansb.setContent(EmojiUtil.stringToEmoji(m.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
+            }
+            ansb.setSolveFlag(Integer.parseInt(m.get("solveFlag")));
+            ansb.setTime(m.get("time"));
+            String username = queryUserNameByUserId(Integer.parseInt(m.get("userid")));
+            ansb.setUsername(m.get(username));
+            ansb.setImage(m.get("image"));
+            String role = queryRoleByUserId(Integer.parseInt(m.get("userid")));
+            ansb.setRole(m.get(role));
+            ansb.setQueid(Integer.parseInt(m.get("queid")));
+            ansb.setQueTitle(m.get("title"));
+            ansb.setQueSolveFlag(Integer.parseInt(m.get("solveFlag")));
+            ansb.setQueScore(Integer.parseInt(m.get("score")));
+
+            ansbs.add(ansb);
+        }
+        return ansbs;
+    }
+
+    private String getUserToAnsTotal(int userid){
+        String sql = "SELECT count(*) AS total FROM answer WHERE userid=?";
+        Object[] obj = {userid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+        if (lists.size()!=0){
+            return lists.get(0).get("total");
+        }
+        return null;
+    }
+
+    public int userToAnsTotalPages(int pageSize, int userid){
+        int total = Integer.parseInt(getUserToAnsTotal(userid));
+        int totalPages = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
+        return totalPages;
+    }
+
+    /**
+     * 根据用户id查询用户名
+     * */
+    public String queryUserNameByUserId(int userid){
+        String sql = "SELECT username FROM user where userid=?";
+        Object[] obj = {userid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+
+        if (lists.size()!=0){
+            return lists.get(0).get("username");
+        }
+        return "无此用户";
+    }
+
+    /**
+     * 根据用户id查询用户头像
+     * */
+    public String queryRoleByUserId(int userid){
+        String sql = "SELECT role FROM user where userid=?";
+        Object[] obj = {userid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+
+        if (lists.size()!=0){
+            return lists.get(0).get("role");
+        }
+        return "img/image.png";
     }
 }

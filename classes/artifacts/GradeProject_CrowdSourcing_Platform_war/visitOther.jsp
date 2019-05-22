@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
@@ -10,6 +12,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -102,31 +105,60 @@
                         <div id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></div>
                         <div id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></div>
                         <%--<a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>--%>
+                        <%--<div class="dropdown">--%>
+                            <%--<button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
+                                <%--设置--%>
+                                <%--<span class="caret"></span>--%>
+                            <%--</button>--%>
+                            <%--<ul class="dropdown-menu" aria-labelledby="dLabel">--%>
+                                <%--<li><a href="">删除</a></li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
                     </div>
                 </div>
-                <script>
-                    if(agids.contains(String(${ansb.ansid}))){
-                        $('#divAgree'+ansid).addClass('FabulousActive');
-                    }
-                    if(disagids.contains(String(${ansb.ansid}))){
-                        $('#divDisagree'+ansid).addClass('FabulousActive');
-                    }
-                </script>
             </c:forEach>
             <!---AnswerItemList E--->
 
-
-
+            <%
+                Object obj = request.getAttribute("totalPage");
+                String totalPage = obj.toString();
+                List<Integer> pageList = new ArrayList<>();
+                int pageNum =0;
+                for (int i=1;i<=Integer.parseInt(totalPage); i++){
+                    pageNum += 1;
+                    pageList.add(pageNum);
+                }
+            %>
             <div class="pageType">
                 <ul class="pagination">
-                    <li class="disabled"><dl>上一页</dl></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">下一页</a></li>
-                    <li class='pageRemark'>共<b>3</b>页 <b>43</b>条数据</li>
+                    <li class="disabled"><a href="visitOther.do?page=1">首页</a></li>
+                    <c:forEach items="<%=pageList%>" var="pageNum">
+                        <li><a id="pageNum${pageNum}" href="visitOther.do?page=${pageNum}">${pageNum}</a></li>
+                    </c:forEach>
+                    <li><a href="visitOther.do?page=${totalPage}">尾页</a></li>
+                    <li class='pageRemark'>共<b>${totalPage}</b>页 <b>${ansSum}</b>条数据</li>
                 </ul>
             </div>
+            <script>
+                $(function () {
+                    var pageNum = parseInt(GetRequest().page);
+                    $('#pageNum'+pageNum).addClass("active");
+                });
+                //获取url中"?"符后的字串
+                function GetRequest() {
+                    var url = location.search;
+                    var theRequest = new Object();
+                    if (url.indexOf("?") != -1) {
+                        var str = url.substr(1);
+                        strs = str.split("&");
+                        for(var i = 0; i < strs.length; i ++) {
+                            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+                        }
+                    }
+                    //返回的是一个对象
+                    return theRequest;
+                }
+            </script>
         </div>
         <!-----详情信息 E-------->
 

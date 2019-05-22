@@ -24,7 +24,7 @@
         <a href="scoreQue.to" class="nav">高分悬赏</a>
         <a href="myQue.to" class="nav">我的问题</a>
         <div class="user">
-            <a href="" class="log">个人中心</a>
+            <a href="myPage.do" class="log">个人中心</a>
             <a href="logout.do" class="log">注销</a>
         </div>
         <div class="so">
