@@ -31,8 +31,6 @@
     <orderEntry type="library" name="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.web.container" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
-    <orderEntry type="library" name="servlet-api" level="project" />
-    <orderEntry type="library" name="jsp-api" level="project" />
     <orderEntry type="library" name="commons-fileupload-1.2.2" level="project" />
     <orderEntry type="library" name="standard" level="project" />
     <orderEntry type="library" name="jstl" level="project" />
@@ -41,5 +39,7 @@
     <orderEntry type="library" name="commons-io-2.1" level="project" />
     <orderEntry type="library" name="commons-lang-2.4" level="project" />
     <orderEntry type="library" name="commons-logging-1.0.4" level="project" />
+    <orderEntry type="library" name="jsp-api" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

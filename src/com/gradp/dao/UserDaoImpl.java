@@ -73,7 +73,7 @@ public class UserDaoImpl {
 	 * 用户注册
 	 * */
 	public int addUser(UserBean ub) {
-		String sql = "insert into user value(null,?,?,?,'img/image.png',0)";
+		String sql = "insert into user value(null,?,?,?,'img/image.png',100)";
 		Object []obj = {ub.getUsername(), ub.getPassword(), ub.getPhone()};
 		return db.update(sql, obj);
 	}

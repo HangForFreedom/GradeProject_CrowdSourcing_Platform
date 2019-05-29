@@ -1,6 +1,7 @@
 package com.gradp.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +17,13 @@ public class UpdatePwServlet extends HttpServlet {
         // TODO Auto-generated method stub
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
 
         String phone = req.getParameter("phone");
         String newpwd1 = req.getParameter("newpassword");
         String newpwd2 = req.getParameter("newpassword2");
-        String security = req.getParameter("security");
+        // String security = req.getParameter("security");
+        PrintWriter out = resp.getWriter();
 
         if(!newpwd1.equals(newpwd2)) {
             req.setAttribute("pswError", "两次输入密码不正确");
