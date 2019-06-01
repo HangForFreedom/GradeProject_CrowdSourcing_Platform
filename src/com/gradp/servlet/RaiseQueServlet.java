@@ -1,5 +1,6 @@
 package com.gradp.servlet;
 
+import com.gradp.bean.ClassesBean;
 import com.gradp.bean.UserBean;
 import com.gradp.biz.QuestionBiz;
 import com.gradp.biz.UserBiz;
@@ -35,10 +36,16 @@ public class RaiseQueServlet extends HttpServlet {
         UserBean ub = (UserBean) session.getAttribute("ub");
 
         UserBiz ubz = new UserBiz();
+        QuestionBiz quebz = new QuestionBiz();
+
         //提出问题数量
         int quesum = ubz.queryQuestionById(ub.getUserid());
         //回答数量
         int anssum = ubz.queryAnswerById(ub.getUserid());
+
+        //查询所有分类
+        List<ClassesBean> classbs = quebz.queryAllClasses();
+        req.setAttribute("classbs", classbs);
         req.setAttribute("quesum", quesum);
         req.setAttribute("anssum", anssum);
 

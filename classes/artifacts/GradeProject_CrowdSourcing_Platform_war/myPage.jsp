@@ -202,7 +202,7 @@
 
 <header>
     <div class="top">
-        <a href="main.do" class="logo"></a>
+        <a href="main.do" class="logo">千言万语</a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
         <a href="scoreQue.to" class="nav">高分悬赏</a>
@@ -258,7 +258,7 @@
                         <div class="AskItemList">
                             <div class="top">
                                 <div class="info">
-                                    <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
+                                    <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="otherPage.do?username=${queb.username}" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
                                     <a href="visitOther.do?queid=${queb.queid}" class="title">${queb.title}</a>
                                 </div>
                                 <div class="da">
@@ -271,7 +271,7 @@
                                 </c:if>
                             </div>
                             <div class="tags">
-                                <a href="">html</a>
+                                <a href="classQue.to?classId=${queb.classid}">${queb.className}</a>
                                 <div class="Appreciation">
                                     <i></i><span>${queb.score}</span>
                                 </div>
@@ -350,7 +350,7 @@
                                 <div class="fuInfo">
                                     <div id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></div>
                                     <div id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></div>
-                                    <a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>
+                                    <%--<a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>--%>
                                     <div class="dropdown">
                                         <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             设置
@@ -429,13 +429,13 @@
             <div class="footer">
                 <h2><span>联系我们</span></h2>
                 <div class="qrc">
-                    <span><img src="images/ewm.png"><dl>微信客服</dl></span>
-                    <span><img src="images/ewm.png"><dl>QQ客服</dl></span>
+                    <span><img src="img/ewm.png"><dl>微信客服</dl></span>
+                    <span><img src="img/ewm.png"><dl>QQ客服</dl></span>
                 </div>
                 <div class="qq">
-                    <span>客服QQ：373604177</span>
-                    <span>联系电话：18758036615</span>
-                    <span>E-mail：xiezhengyi@126.com</span>
+                    <span>客服QQ：951308338</span>
+                    <span>联系电话：17853556210</span>
+                    <span>E-mail：hang6210@qq.com</span>
                 </div>
                 <div class="nlink">
                     <span><a href="">关于我们</a><i>|<i></span>
@@ -444,7 +444,7 @@
                     <span><a href="">联系我们</a></span>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 1999-2019 江苏乐知网络技术有限公司江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有</p>
+                    <p>&copy; 2019  Hang</p>
                 </div>
             </div>
 

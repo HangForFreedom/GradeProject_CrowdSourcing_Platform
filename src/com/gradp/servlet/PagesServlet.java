@@ -1,5 +1,6 @@
 package com.gradp.servlet;
 
+import com.gradp.bean.ClassesBean;
 import com.gradp.bean.QuestionBean;
 import com.gradp.bean.UserBean;
 import com.gradp.biz.QuestionBiz;
@@ -85,6 +86,10 @@ public class PagesServlet extends HttpServlet {
             q.setAnssum2que(anssum2que);
         }
 
+        //查询所有分类
+        List<ClassesBean> classbs = quebz.queryAllClasses();
+        req.setAttribute("classbs", classbs);
+
         req.setAttribute("quesum", quesum);
         req.setAttribute("anssum", anssum);
         req.setAttribute("page", page);
@@ -136,6 +141,10 @@ public class PagesServlet extends HttpServlet {
             q.setAnssum2que(anssum2que);
         }
 
+        //查询所有分类
+        List<ClassesBean> classbs = quebz.queryAllClasses();
+        req.setAttribute("classbs", classbs);
+
         req.setAttribute("quesum", quesum);
         req.setAttribute("anssum", anssum);
         req.setAttribute("page", page);
@@ -146,5 +155,58 @@ public class PagesServlet extends HttpServlet {
         req.setAttribute("queSum", queSum);
 
         req.getRequestDispatcher("scoreQue.jsp").forward(req, resp);
+    }
+
+    private void classQue(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html;charset=UTF-8");
+        req.setCharacterEncoding("UTF-8");
+        QuestionBiz quebz = new QuestionBiz();
+        UserBiz ubz = new UserBiz();
+        String classid = req.getParameter("classId");
+
+        //登录这信息
+        HttpSession session = req.getSession();
+        UserBean ub = (UserBean) session.getAttribute("ub");
+        session.setAttribute("ub", ub);
+
+        //提出问题数量
+        int quesum = ubz.queryQuestionById(ub.getUserid());
+        //回答数量
+        int anssum = ubz.queryAnswerById(ub.getUserid());
+
+
+        // 每页6条记录
+        int pageSize = 9;
+        String spage = req.getParameter("page");
+        if (spage == null || spage == ""){
+            spage = "1";
+        }
+        int page = Integer.parseInt(spage);
+        int totalPage = quebz.queTotalPages(pageSize);
+
+        List<QuestionBean> quebs = quebz.queryQueByClassId(page, pageSize, Integer.parseInt(classid));
+        int queSum = quebs.size();
+
+        for (QuestionBean q : quebs){
+            int queid = q.getQueid();
+
+            //查询每条问题回答数量
+            int anssum2que = quebz.queryAnswerSumById(queid);
+            q.setAnssum2que(anssum2que);
+        }
+
+        //查询所有分类
+        List<ClassesBean> classbs = quebz.queryAllClasses();
+        req.setAttribute("classbs", classbs);
+        req.setAttribute("quesum", quesum);
+        req.setAttribute("anssum", anssum);
+        req.setAttribute("page", page);
+        req.setAttribute("totalPage", totalPage);
+        req.setAttribute("quebs", quebs);
+        req.setAttribute("queSum", queSum);
+
+
+        req.getRequestDispatcher("classQue.jsp").forward(req, resp);
     }
 }

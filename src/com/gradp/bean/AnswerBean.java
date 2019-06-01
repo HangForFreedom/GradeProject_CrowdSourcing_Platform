@@ -147,4 +147,14 @@ public class AnswerBean {
     private String username;
 
     private String role;
+
+    public double getWilsonScore() {
+        return wilsonScore;
+    }
+
+    public void setWilsonScore(double wilsonScore) {
+        this.wilsonScore = wilsonScore;
+    }
+
+    private double wilsonScore;
 }

@@ -28,8 +28,10 @@
             <a href="logout.do" class="log">注销</a>
         </div>
         <div class="so">
-            <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <form action="main.do" method="post">
+                <input type="text" name="key" class="key" placeholder="请输入关键词">
+                <input type="submit" class="sobut" value="搜索答案">
+            </form>
         </div>
 
     </div>
@@ -42,19 +44,16 @@
     <div class="amLeft" id="floatLeft">
         <h2>全部分类</h2>
         <ul>
-            <li><a href="">社会民生</a></li>
-            <li><a href="">健康生活</a></li>
-            <li><a href="">文化艺术</a></li>
-            <li><a href="">电脑网络</a></li>
-            <li><a href="">行政地区</a></li>
-            <li><a href="">医疗卫生</a></li>
-            <li><a href="">经济金融</a></li>
-            <li><a href="">法律法规</a></li>
-            <li><a href="">科学教育</a></li>
-            <li><a href="">体育运动</a></li>
-            <li><a href="">电子数码</a></li>
-            <li><a href="">娱乐休闲</a></li>
-            <li><a href="">心理分析</a></li>
+            <%--<li><a href="">翻译频道</a></li>--%>
+            <%--<li><a href="">听力频道</a></li>--%>
+            <%--<li><a href="">口语频道</a></li>--%>
+            <%--<li><a href="">阅读频道</a></li>--%>
+            <%--<li><a href="">写作频道</a></li>--%>
+            <%--<li><a href="">英语语法</a></li>--%>
+            <%--<li><a href="">词汇天地</a></li>--%>
+            <c:forEach items="${classbs}" var="classb">
+                <li><a href="classQue.to?classId=${classb.classid}">${classb.className}</a></li>
+            </c:forEach>
         </ul>
     </div>
 
@@ -64,7 +63,7 @@
             <div class="AskItemList">
                 <div class="top">
                     <div class="info">
-                        <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
+                        <span style="color:#666;">${queb.time}&nbsp;</span><span>来自&nbsp;</span><a href="otherPage.do?username=${queb.username}" class="uname">${queb.username}</a><span>&nbsp;的提问</span>
                         <a href="visitOther.do?queid=${queb.queid}" class="title">${queb.title}</a>
                     </div>
                     <div class="da">
@@ -77,7 +76,7 @@
                     </c:if>
                 </div>
                 <div class="tags">
-                    <a href="">html</a>
+                    <a href="classQue.to?classId=${queb.classid}">${queb.className}</a>
                     <div class="Appreciation">
                         <i></i><span>${queb.score}</span>
                     </div>
@@ -156,29 +155,29 @@
             </div>
         </div>
 
-        <h2>最新回答</h2>
-        <div class="newAnswer">
-            <!---item S--->
-            <div class="item">
-                <a href="" class="portrait"><img src="images/1.jpg"></a>
-                <div class="info">
-                    <a href="" class="uname">黑色幽默y</a> <dl>回答了：</dl><a href="" class="t">c# httpclient调用webapi获取json数</a>
-                </div>
-            </div>
-            <!---item E--->
-        </div>
+        <%--<h2>最新回答</h2>--%>
+        <%--<div class="newAnswer">--%>
+            <%--<!---item S--->--%>
+            <%--<div class="item">--%>
+                <%--<a href="" class="portrait"><img src="images/1.jpg"></a>--%>
+                <%--<div class="info">--%>
+                    <%--<a href="" class="uname">黑色幽默y</a> <dl>回答了：</dl><a href="" class="t">c# httpclient调用webapi获取json数</a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<!---item E--->--%>
+        <%--</div>--%>
 
         <div class="floatRight" id="floatLeft2">
             <div class="footer">
                 <h2><span>联系我们</span></h2>
                 <div class="qrc">
-                    <span><img src="images/ewm.png"><dl>微信客服</dl></span>
-                    <span><img src="images/ewm.png"><dl>QQ客服</dl></span>
+                    <span><img src="img/ewm.png"><dl>微信客服</dl></span>
+                    <span><img src="img/ewm.png"><dl>QQ客服</dl></span>
                 </div>
                 <div class="qq">
-                    <span>客服QQ：373604177</span>
-                    <span>联系电话：18758036615</span>
-                    <span>E-mail：xiezhengyi@126.com</span>
+                    <span>客服QQ：951308338</span>
+                    <span>联系电话：17853556210</span>
+                    <span>E-mail：hang6210@qq.com</span>
                 </div>
                 <div class="nlink">
                     <span><a href="">关于我们</a><i>|<i></span>
@@ -187,7 +186,7 @@
                     <span><a href="">联系我们</a></span>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 1999-2019 江苏乐知网络技术有限公司江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有</p>
+                    <p>&copy; 2019  Hang</p>
                 </div>
             </div>
         </div>

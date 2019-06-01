@@ -112,7 +112,6 @@ public class LoginServlet extends HttpServlet {
 	 * */
 	private void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().invalidate();
-		System.out.println("hello");
 		req.getRequestDispatcher("index.jsp").forward(req, resp);
 	}
 

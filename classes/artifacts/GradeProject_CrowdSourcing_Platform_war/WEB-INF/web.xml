@@ -82,4 +82,12 @@
         <servlet-name>MyPageServlet</servlet-name>
         <url-pattern>/myPage.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>OtherPageServlet</servlet-name>
+        <servlet-class>com.gradp.servlet.OtherPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OtherPageServlet</servlet-name>
+        <url-pattern>/otherPage.do</url-pattern>
+    </servlet-mapping>
 </web-app>

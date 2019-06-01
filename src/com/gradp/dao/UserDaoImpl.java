@@ -170,6 +170,25 @@ public class UserDaoImpl {
 	}
 
 	/**
+	 * 查询用户回答过的某一问题的答案列表
+	 * */
+	public List<Integer> queryAswerAnsList(int userid, int queid){
+		List<Integer> result = new ArrayList<>();
+		String sql = "SELECT ansid FROM answer WHERE userid=? and queid=?";
+		Object[] obj = {userid, queid};
+		List<Map<String, String>> lists = db.query(sql, obj);
+		if (lists == null || lists.size() == 0){
+			return result;
+		}
+		for (Map<String, String> list : lists){
+			for (String value : list.values()){
+				result.add(Integer.parseInt(value));
+			}
+		}
+		return result;
+	}
+
+	/**
      * 根据userid查询用户积分
      * */
 	public int queryUserScoreById(int userid){
@@ -190,4 +209,31 @@ public class UserDaoImpl {
         Object[] obj = {score, userid};
         return db.update(sql, obj);
     }
+
+    /**
+	 * 查看他人主页时，根据用户名查询所有信息
+	 * */
+    public UserBean queryUserByUsername(String username){
+    	String sql = "SELECT * FROM user WHERE username=?";
+    	Object [] obj =  {username};
+    	List<Map<String, String>> lists = db.query(sql, obj);
+		if(lists.size() != 0) {
+			for(Map<String, String> map : lists) {
+				UserBean ub = new UserBean();
+
+				String userid = map.get("userid");
+				String score = map.get("score");
+
+				ub.setUserid(Integer.parseInt(userid));
+				ub.setUsername(map.get("username"));
+				ub.setPassword(map.get("password"));
+				ub.setPhone(map.get("phone"));
+				ub.setRole(map.get("role"));
+				ub.setScore(Integer.parseInt(score));
+
+				return ub;
+			}
+		}
+		return null;
+	}
 }

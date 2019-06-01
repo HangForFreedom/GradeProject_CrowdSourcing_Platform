@@ -118,4 +118,24 @@ public class QuestionBean {
         this.anssum2que = anssum2que;
     }
 
+    public int getClassid() {
+        return classid;
+    }
+
+    public void setClassid(int classid) {
+        this.classid = classid;
+    }
+
+    private int classid;
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    private String className;
+
 }

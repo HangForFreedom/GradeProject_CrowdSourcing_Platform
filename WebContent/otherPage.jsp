@@ -225,14 +225,14 @@
     <div class="userInfoBack">
         <div class="userInfo">
             <div class="us">
-                <a href="" class="portrait"><img src="${ub.role}"></a>
+                <a href="" class="portrait"><img src="${otherUb.role}"></a>
                 <div class="info">
-                    <span href="">${ub.username}</span>
+                    <span href="">${otherUb.username}</span>
                     <%--<span><dl>声望：</dl><em>2601</em></span>--%>
                 </div>
             </div>
             <div class="wenda">
-                <div class="txt"><span>我的积分 <a href="">${ub.score}</a> </span></div>
+                <div class="txt"><span>${otherUb.username}的积分 <a href="">${otherUb.score}</a> </span></div>
                 <%--<div class="txt"><i class="w">问</i><span>提了 <a href="">${quesum}</a> 个问题 </span></div>--%>
                 <%--<div class="txt"><i class="d">答</i><span>回答了 <a href="">${anssum}</a> 个问题</span></div>--%>
             </div>
@@ -246,8 +246,8 @@
         <div class="tab" role="tabpanel">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">我的问题 (${quesum})</a></li>
-                <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">我的回答 (${anssum})</a></li>
+                <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">他的问题 (${quesum})</a></li>
+                <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">他的回答 (${anssum})</a></li>
                 <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
             </ul>
             <!-- Tab panes -->
@@ -350,13 +350,13 @@
                                 <div class="fuInfo">
                                     <div id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></div>
                                     <div id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></div>
-                                    <%--<a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>--%>
+                                    <a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>
                                     <div class="dropdown">
                                         <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             设置
                                             <span class="caret"></span>
                                         </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
                                             <li><a href="">删除</a></li>
                                         </ul>
                                     </div>
@@ -423,9 +423,21 @@
 
 
     <div class="amRight">
+        <div class="userInfo">
+            <div class="us">
+                <a href="" class="portrait"><img src="${ub.role}"></a>
+                <div class="info">
+                    <a href="">${ub.username}</a>
+                </div>
+            </div>
+            <div class="wenda">
+                <div class="txt"><i class="d">积</i><span>我还有 <a href="">${ub.score}</a> 积分</span></div>
+                <div class="txt"><i class="w">问</i><span>提了 <a href="">${quesum}</a> 个问题 </span></div>
+                <div class="txt"><i class="d">答</i><span>回答了 <a href="">${anssum}</a> 个问题</span></div>
+            </div>
+        </div>
 
         <div class="floatRight" id="floatLeft2">
-
             <div class="footer">
                 <h2><span>联系我们</span></h2>
                 <div class="qrc">
@@ -447,12 +459,7 @@
                     <p>&copy; 2019  Hang</p>
                 </div>
             </div>
-
         </div>
-
-
-
-
     </div>
 
 

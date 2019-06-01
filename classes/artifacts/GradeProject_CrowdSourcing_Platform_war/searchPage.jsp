@@ -1,6 +1,4 @@
-<%@ page import="com.gradp.bean.QuestionBean" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -9,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-    <title>问答</title>
+    <title>搜索问题</title>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 </head>
@@ -28,8 +26,10 @@
             <a href="logout.do" class="log">注销</a>
         </div>
         <div class="so">
-            <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <form action="main.do" method="post" accept-charset="UTF-8">
+                <input type="text" name="key" class="key" placeholder="请输入关键词">
+                <input type="submit" class="sobut" value="搜索答案">
+            </form>
         </div>
 
     </div>
@@ -82,46 +82,6 @@
             </div>
         </c:forEach>
 
-        <%
-            Object obj = request.getAttribute("totalPage");
-            String totalPage = obj.toString();
-            List<Integer> pageList = new ArrayList<>();
-            int pageNum =0;
-            for (int i=1;i<=Integer.parseInt(totalPage); i++){
-                pageNum += 1;
-                pageList.add(pageNum);
-            }
-        %>
-        <div class="pageType">
-            <ul class="pagination">
-                <li class="disabled"><a href="scoreQue.to?page=1">首页</a></li>
-                <c:forEach items="<%=pageList%>" var="pageNum">
-                    <li><a id="pageNum${pageNum}" href="scoreQue.to?page=${pageNum}">${pageNum}</a></li>
-                </c:forEach>
-                <li><a href="scoreQue.to?page=${totalPage}">尾页</a></li>
-                <li class='pageRemark'>共<b>${totalPage}</b>页 <b>${queSum}</b>条数据</li>
-            </ul>
-        </div>
-        <script>
-            $(function () {
-                var pageNum = parseInt(GetRequest().page);
-                $('#pageNum'+pageNum).addClass("active");
-            });
-            //获取url中"?"符后的字串
-            function GetRequest() {
-                var url = location.search;
-                var theRequest = new Object();
-                if (url.indexOf("?") != -1) {
-                    var str = url.substr(1);
-                    strs = str.split("&");
-                    for(var i = 0; i < strs.length; i ++) {
-                        theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
-                    }
-                }
-                //返回的是一个对象
-                return theRequest;
-            }
-        </script>
     </div>
 
     <div class="amRight">

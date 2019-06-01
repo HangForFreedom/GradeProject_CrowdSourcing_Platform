@@ -1,6 +1,7 @@
 package com.gradp.biz;
 
 import com.gradp.bean.AnswerBean;
+import com.gradp.bean.ClassesBean;
 import com.gradp.bean.QuestionBean;
 import com.gradp.dao.QuestionDaoImpl;
 
@@ -68,8 +69,8 @@ public class QuestionBiz {
     /**
      * 查询回答内容
      * */
-    public List<AnswerBean> queryAnswerById(int page, int pageSize, int queid){
-        return queDao.queryAnswerById(page, pageSize, queid);
+    public List<AnswerBean> queryAnswerById(int queid){
+        return queDao.queryAnswerById(queid);
     }
 
     /**
@@ -117,5 +118,25 @@ public class QuestionBiz {
         return queDao.queTotalPages(pageSize);
     }
 
+    /**
+     * 查询类别列表
+     * */
+    public List<ClassesBean> queryAllClasses(){
+        return queDao.queryAllClasses();
+    }
+
+    /**
+     * 根据分类查询问题
+     * */
+    public List<QuestionBean> queryQueByClassId(int page, int pageSize, int classid){
+        return queDao.queryQueByClassId(page, pageSize, classid);
+    }
+
+    /**
+     * 模糊查询，搜索功能
+     * */
+    public List<QuestionBean> searchQuetionList(String title){
+        return queDao.searchQuetionList(title);
+    }
 
 }

@@ -107,4 +107,19 @@ public class UserBiz {
     public int updateUserScoreById(int score, int userid){
         return uid.updateUserScoreById(score, userid);
     }
+
+	/**
+	 * 查询用户回答过的某一问题的答案列表
+	 * */
+	public List<Integer> queryAswerAnsList(int userid, int queid){
+		return uid.queryAswerAnsList(userid, queid);
+	}
+
+	/**
+	 * 查看他人主页时，根据用户名查询所有信息
+	 * */
+	public UserBean queryUserByUsername(String username){
+		UserBean ub = uid.queryUserByUsername(username);
+		return ub;
+	}
 }

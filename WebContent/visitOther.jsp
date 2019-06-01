@@ -19,13 +19,13 @@
 
 <header>
     <div class="top">
-        <a href="main.do" class="logo"></a>
+        <a href="main.do" class="logo">千言万语</a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
         <a href="scoreQue.to" class="nav">高分悬赏</a>
         <a href="myQue.to" class="nav">我的问题</a>
         <div class="user">
-            <a href="" class="log">个人中心</a>
+            <a href="myPage.do" class="log">个人中心</a>
             <a href="logout.do" class="log">注销</a>
         </div>
         <div class="so">
@@ -54,7 +54,8 @@
                 <h1><span>${queSolved}</span>${queb.title}</h1>
 
                 <div class="fui">
-                    <div class="time">${queb.time} <span>提问</span></div>
+                    // todo 浏览他人主页
+                    <div class="time">${queb.time} <span><a href="" style="font:16px/24px 'microsoft yahei';color:#09F;">${queb.username}</a> 提问</span></div>
                     <div class="Appreciation"><i></i><span>${queb.score}</span></div>
                 </div>
 
@@ -62,11 +63,6 @@
 
                 <div class="vice-info">
                     <a class="MydaBut" id="MydaBut"><i>答</i><span>我来答</sapn></a>
-                    <div class="th">
-                        <a href="" class="z"><span>点赞</span><em>2</em></a><i>|</i>
-                        <a href="" class="z"><span>收藏</span><em>1</em></a><i>|</i>
-                        <a href="" class="z"><span>举报</span></a>
-                    </div>
                     <div class="hits">浏览 16094 次</div>
                 </div>
             </c:forEach>
@@ -102,100 +98,52 @@
                     </div>
                     <%--<div class="read-more" id="read-more${ansb.ansid}"></div>--%>
                     <div class="fuInfo">
-                        <div id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></div>
-                        <div id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></div>
-                        <%--<a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>--%>
-                        <%--<div class="dropdown">--%>
-                            <%--<button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-                                <%--设置--%>
-                                <%--<span class="caret"></span>--%>
-                            <%--</button>--%>
-                            <%--<ul class="dropdown-menu" aria-labelledby="dLabel">--%>
-                                <%--<li><a href="">删除</a></li>--%>
-                            <%--</ul>--%>
-                        <%--</div>--%>
+                        <button id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></button>
+                        <button id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></button>
+
                     </div>
                 </div>
+                <script>
+                    Array.prototype.contains = function (obj) {
+                        var i = this.length;
+                        while (i--) {
+                            if (this[i] === obj) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    var agreedAnsList = "${agreedAnsList}";
+                    var disagreeAnsList = "${disagreedAnsList}";
+                    var answerAnsList = "${answerAnsList}";
+                    var agids = agreedAnsList.split(",");
+                    var disagids = disagreeAnsList.split(",");
+                    var answerids = answerAnsList.split(",");
+                    if(agids.contains(String(${ansb.ansid}))){
+                        $('#divAgree${ansb.ansid}').addClass("FabulousActive");
+                        $('#divDisagree${ansb.ansid}').prop("disabled", true);
+                        $('#divDisagree${ansb.ansid}').css("cursor", "text");
+                    }
+                    if(disagids.contains(String(${ansb.ansid}))){
+                        $('#divDisagree${ansb.ansid}').addClass("FabulousActive");
+                        $('#divAgree${ansb.ansid}').prop("disabled", true);
+                        $('#divAgree${ansb.ansid}').css("cursor", "text");
+                    }
+                    if (answerids.contains(String(${ansb.ansid}))){
+                        $('#MydaBut').remove();
+                    }
+                </script>
             </c:forEach>
             <!---AnswerItemList E--->
-
-            <%
-                Object obj = request.getAttribute("totalPage");
-                String totalPage = obj.toString();
-                List<Integer> pageList = new ArrayList<>();
-                int pageNum =0;
-                for (int i=1;i<=Integer.parseInt(totalPage); i++){
-                    pageNum += 1;
-                    pageList.add(pageNum);
-                }
-            %>
-            <div class="pageType">
-                <ul class="pagination">
-                    <li class="disabled"><a href="visitOther.do?page=1">首页</a></li>
-                    <c:forEach items="<%=pageList%>" var="pageNum">
-                        <li><a id="pageNum${pageNum}" href="visitOther.do?page=${pageNum}">${pageNum}</a></li>
-                    </c:forEach>
-                    <li><a href="visitOther.do?page=${totalPage}">尾页</a></li>
-                    <li class='pageRemark'>共<b>${totalPage}</b>页 <b>${ansSum}</b>条数据</li>
-                </ul>
-            </div>
-            <script>
-                $(function () {
-                    var pageNum = parseInt(GetRequest().page);
-                    $('#pageNum'+pageNum).addClass("active");
-                });
-                //获取url中"?"符后的字串
-                function GetRequest() {
-                    var url = location.search;
-                    var theRequest = new Object();
-                    if (url.indexOf("?") != -1) {
-                        var str = url.substr(1);
-                        strs = str.split("&");
-                        for(var i = 0; i < strs.length; i ++) {
-                            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
-                        }
-                    }
-                    //返回的是一个对象
-                    return theRequest;
-                }
-            </script>
         </div>
         <!-----详情信息 E-------->
 
-
-        <!---itemlist S--->
-        <div class="AskItemList">
-            <div class="top">
-                <div class="info">
-                    <span style="color:#666;">2小时前&nbsp;</span><span>来自&nbsp;</span><a href="" class="uname">xiezhengyi1986</a><span>&nbsp;的提问</span>
-                    <a href="" class="title">如何在dxf文件中添加新图层及在新添图层中添加实体信息？</a>
-                </div>
-                <div class="da">
-                    <span><em>24</em><dl>已有回答</dl></span>
-                </div>
-            </div>
-            <div class="desc">拦截所有的浏览器请求 access="ROLE_ADMIN" 只有ROLE_ADMIN角色的用才可以访问 规则角色名必须以ROLE_开头 为啥都得以ROLE_开头 还必须得大写 我试了小写role都不..</div>
-            <div class="tags">
-                <a href="">html</a>
-                <div class="Appreciation">
-                    <i></i><span>10</span>
-                </div>
-                <div class="share_bar_con">
-                	<span>
-                    	<dl>浏览量</dl><em>(16)</em><i>|</i>
-                        <dl>点赞</dl><em class="cur">(16)</em><i>|</i>
-                        <dl>收藏</dl><em class="cur">(8)</em>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <!---itemlist E--->
     </div>
 
 
 
     <div class="amRight">
-        <a href="questions.html" class="askBut">我有问题，我要提问！</a>
+        <a href="raise.do" class="askBut">我有问题，我要提问！</a>
         <h2>最新公告</h2>
         <div class="titleList">
             <a href="">谁帮忙下载个文件呢，有偿，文件需要1个下载积分</a>
@@ -217,17 +165,17 @@
             </div>
         </div>
 
-        <h2>最新回答</h2>
-        <div class="newAnswer">
-            <!---item S--->
-            <div class="item">
-                <a href="" class="portrait"><img src="images/1.jpg"></a>
-                <div class="info">
-                    <a href="" class="uname">黑色幽默y</a> <dl>回答了：</dl><a href="" class="t">c# httpclient调用webapi获取json数</a>
-                </div>
-            </div>
-            <!---item E--->
-        </div>
+        <%--<h2>最新回答</h2>--%>
+        <%--<div class="newAnswer">--%>
+            <%--<!---item S--->--%>
+            <%--<div class="item">--%>
+                <%--<a href="" class="portrait"><img src="images/1.jpg"></a>--%>
+                <%--<div class="info">--%>
+                    <%--<a href="" class="uname">黑色幽默y</a> <dl>回答了：</dl><a href="" class="t">c# httpclient调用webapi获取json数</a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<!---item E--->--%>
+        <%--</div>--%>
 
         <div style="width:100%; height:20px;"> </div>
 
@@ -238,13 +186,13 @@
             <div class="footer">
                 <h2><span>联系我们</span></h2>
                 <div class="qrc">
-                    <span><img src="images/ewm.png"><dl>微信客服</dl></span>
-                    <span><img src="images/ewm.png"><dl>QQ客服</dl></span>
+                    <span><img src="img/ewm.png"><dl>微信客服</dl></span>
+                    <span><img src="img/ewm.png"><dl>QQ客服</dl></span>
                 </div>
                 <div class="qq">
-                    <span>客服QQ：373604177</span>
-                    <span>联系电话：18758036615</span>
-                    <span>E-mail：xiezhengyi@126.com</span>
+                    <span>客服QQ：951308338</span>
+                    <span>联系电话：17853556210</span>
+                    <span>E-mail：hang6210@qq.com</span>
                 </div>
                 <div class="nlink">
                     <span><a href="">关于我们</a><i>|<i></span>
@@ -253,8 +201,8 @@
                     <span><a href="">联系我们</a></span>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 1999-2019 江苏乐知网络技术有限公司江苏知之为计算机有限公司 北京创新乐知信息技术有限公司版权所有</p>
-                </div>
+                    <p>&copy; 2019  Hang</p>
+                </div>s
             </div>
 
         </div>

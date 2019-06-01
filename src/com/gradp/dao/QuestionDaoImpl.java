@@ -1,6 +1,7 @@
 package com.gradp.dao;
 
 import com.gradp.bean.AnswerBean;
+import com.gradp.bean.ClassesBean;
 import com.gradp.bean.QuestionBean;
 import com.gradp.util.DBUtil;
 import com.gradp.util.EmojiUtil;
@@ -48,6 +49,8 @@ public class QuestionDaoImpl {
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
 
             quebs.add(queb);
         }
@@ -88,6 +91,8 @@ public class QuestionDaoImpl {
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
 
             quebs.add(queb);
         }
@@ -98,7 +103,7 @@ public class QuestionDaoImpl {
      * 根据queid查询单个问题
      * */
     public List<QuestionBean> querySingleQuestion(int queid){
-        String sql = "SELECT * FROM question WHERE queid=?";
+        String sql = "SELECT question.*, u.username, u.role FROM question LEFT JOIN user u ON u.userid=question.userid WHERE queid=?";
         Object[] obj = {queid};
         List<Map<String, String>> lists = db.query(sql, obj);
         List<QuestionBean> quebs = new ArrayList<>();
@@ -124,6 +129,8 @@ public class QuestionDaoImpl {
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
 
             quebs.add(queb);
         }
@@ -164,6 +171,8 @@ public class QuestionDaoImpl {
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
 
             quebs.add(queb);
         }
@@ -213,13 +222,9 @@ public class QuestionDaoImpl {
     /**
      * 查询回答内容(添加分页)
      * */
-    public List<AnswerBean> queryAnswerById(int page, int pageSize, int queid){
+    public List<AnswerBean> queryAnswerById(int queid){
         List<AnswerBean> ansbs = new ArrayList<>();
-        int start = 0;
-        if (page>0){
-            start = (page - 1) * pageSize;
-        }
-        String sql = "SELECT * From answer WHERE queid=? ORDER BY solveFlag desc LIMIT " + start + "," + pageSize;
+        String sql = "SELECT * From answer WHERE queid=? ORDER BY solveFlag desc";
         Object[] obj = {queid};
         List<Map<String, String>> lists = db.query(sql, obj);
         for (Map<String, String> m : lists){
@@ -234,6 +239,7 @@ public class QuestionDaoImpl {
             String role = queryRoleByUserId(Integer.parseInt(m.get("userid")));
             ansb.setRole(role);
             ansb.setSolveFlag(Integer.parseInt(m.get("solveFlag")));
+            // ansb.setWilsonScore(Double.parseDouble(m.get("wilsonScore")));
 
             ansbs.add(ansb);
         }
@@ -290,8 +296,8 @@ public class QuestionDaoImpl {
      * */
     public int raiseQuestion(Map m){
         // queid, userid, title, content, image, time, score, solveFlag
-        String sql = "INSERT INTO question values(null,?,?,?,?,now(),?,0)";
-        Object [] obj = {m.get("userid"),m.get("queTitle"),m.get("queContent"),m.get("queImg"),m.get("queScore")};
+        String sql = "INSERT INTO question values(null,?,?,?,?,now(),?,0,?)";
+        Object [] obj = {m.get("userid"),m.get("queTitle"),m.get("queContent"),m.get("queImg"),m.get("queScore"),m.get("queClasses")};
         return db.update(sql, obj);
     }
 
@@ -379,6 +385,8 @@ public class QuestionDaoImpl {
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
 
             quebs.add(queb);
         }
@@ -402,4 +410,112 @@ public class QuestionDaoImpl {
         return totalPages;
     }
 
+
+    /***** 实现分类功能 *****/
+
+    /**
+     * 查询类别列表
+     * */
+    public List<ClassesBean> queryAllClasses(){
+        List<ClassesBean> classbs = new ArrayList<>();
+        String sql = "SELECT * FROM classes";
+        List<Map<String, String>> lists = db.query(sql, null);
+        for (Map<String, String> m : lists){
+            ClassesBean classb = new ClassesBean();
+            classb.setClassid(Integer.parseInt(m.get("classid")));
+            classb.setClassName(m.get("className"));
+            classb.setDeleteFlag(Integer.parseInt(m.get("deleteFlag")));
+
+            classbs.add(classb);
+        }
+        return classbs;
+    }
+
+    /**
+     * 根据分类查询问题
+     * */
+    public List<QuestionBean> queryQueByClassId(int page, int pageSize, int classid){
+        List<QuestionBean> quebs = new ArrayList<>();
+        int start = 0;
+        if (page>0){
+            start = (page - 1) * pageSize;
+        }
+        String sql = "SELECT * FROM question WHERE classid=? ORDER BY time DESC LIMIT " + start + "," + pageSize;
+        Object[] obj = {classid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+        for (Map<String, String> q : lists){
+            QuestionBean queb = new QuestionBean();
+            //引号里的对应表中的列名
+            queb.setQueid(Integer.parseInt(q.get("queid")));
+            if (q.get("content")=="" || q.get("content")==null){
+                queb.setContent("");
+            }else{
+                try {
+                    queb.setContent(EmojiUtil.stringToEmoji(q.get("content")));
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
+            }
+            queb.setTitle(q.get("title"));
+            queb.setTime(q.get("time"));
+            queb.setImage(q.get("image"));
+            queb.setUserid(Integer.parseInt(q.get("userid")));
+            queb.setUsername(q.get("username"));
+            queb.setRole(q.get("role"));
+            queb.setScore(Integer.parseInt(q.get("score")));
+            queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
+
+            quebs.add(queb);
+        }
+        return quebs;
+    }
+
+    /**
+     * 根据分类id查询分类名，在显示问题出显示类名
+     * */
+    private String queryClassNameById(int classid){
+        String sql = "SELECT className FROM classes WHERE classid=?";
+        Object[] obj = {classid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+        if (lists.size()!=0){
+            return lists.get(0).get("className");
+        }
+        return null;
+    }
+
+    /**
+     * 模糊查询，搜索功能
+     * */
+    public List<QuestionBean> searchQuetionList(String key){
+        List<QuestionBean> quebs = new ArrayList<>();
+        // StringBuilder sql = new StringBuilder(" SELECT * FROM question WHERE 1=1 ");
+        // List<String> paramList = new ArrayList<>();
+        // if (title != null && !"".equals(title.trim())){
+        //     sql.append(" and title like ? ORDER BY time DESC ");
+        //     paramList.add(title);
+        // }
+        String sql = "SELECT * FROM question WHERE title LIKE ? OR content LIKE ?";
+        Object [] obj = {key,key};
+        List<Map<String, String>> lists = db.query(sql, obj);
+        for (Map<String, String> q : lists){
+            QuestionBean queb = new QuestionBean();
+            queb.setQueid(Integer.parseInt(q.get("queid")));
+            queb.setContent(q.get("content"));
+            queb.setTitle(q.get("title"));
+            queb.setTime(q.get("time"));
+            queb.setImage(q.get("image"));
+            queb.setUserid(Integer.parseInt(q.get("userid")));
+            queb.setUsername(q.get("username"));
+            queb.setRole(q.get("role"));
+            queb.setScore(Integer.parseInt(q.get("score")));
+            queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
+            queb.setClassid(Integer.parseInt(q.get("classid")));
+            queb.setClassName(queryClassNameById(Integer.parseInt(q.get("classid"))));
+
+            quebs.add(queb);
+        }
+        return quebs;
+    }
 }

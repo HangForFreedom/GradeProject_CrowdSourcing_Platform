@@ -20,10 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p>摘要：</p>
@@ -66,22 +63,15 @@ public class VisitServlet extends HttpServlet {
         //回答数量
         int anssum = ubz.queryAnswerById(ub.getUserid());
 
-        // 每页6条记录
-        int pageSize = 5;
-        String spage = req.getParameter("page");
-        if (spage == null || spage == ""){
-            spage = "1";
-        }
-        int page = Integer.parseInt(spage);
-        int totalPage = quebz.ansTotalPages(pageSize);
-
         //查询根据queid查询所有回答
-        List<AnswerBean> ansbs = quebz.queryAnswerById(page, pageSize, Integer.parseInt(queid));
+        List<AnswerBean> ansbs = quebz.queryAnswerById(Integer.parseInt(queid));
+
         int ansSum = ansbs.size();
 
         UserBiz userbz = new UserBiz();
         List<Integer> agreedAnsList = userbz.queryAgreedAnsList(ub.getUserid());
         List<Integer> disagreedAnsList = userbz.queryDisagreedAnsList(ub.getUserid());
+        List<Integer> answerAnsList = userbz.queryAswerAnsList(ub.getUserid(), Integer.parseInt(queid));
         String agids = "";
         for (Integer integer : agreedAnsList) {
             agids += integer + ",";
@@ -90,8 +80,13 @@ public class VisitServlet extends HttpServlet {
         for (Integer integer : disagreedAnsList) {
             disagIds += integer + ",";
         }
+        String answerIds = "";
+        for (Integer integer : answerAnsList){
+            answerIds += integer + ",";
+        }
         req.setAttribute("agreedAnsList", agids);
         req.setAttribute("disagreedAnsList", disagIds);
+        req.setAttribute("answerAnsList", answerIds);
         req.setAttribute("solve", "采纳失败");
         for (AnswerBean an : ansbs){
             Integer ansid = an.getAnsid();
@@ -111,6 +106,27 @@ public class VisitServlet extends HttpServlet {
                 req.setAttribute("solveansid", ansid);
             }
         }
+
+        Collections.sort(ansbs, new Comparator<AnswerBean>() {
+            @Override
+            public int compare(AnswerBean o1, AnswerBean o2) {
+                for (AnswerBean an : ansbs){
+                    Integer ansid = an.getAnsid();
+                    int agNum = quebz.queryAgreeById(ansid);
+                    int disagNum = quebz.queryDisagreeById(ansid);
+                    int totalNum = agNum + disagNum;
+                    double pos = agNum*1.0 / totalNum*1.0;
+                    double p_z = 1.96;
+                    double score =  (pos + (Math.pow(p_z, 2) / (2.0*totalNum)) - ((p_z / (2.0*totalNum)) * Math.sqrt(4.0 * totalNum * (1.0 - pos) * pos + Math.pow(p_z, 2)))) / (1.0 + (Math.pow(p_z,2) / totalNum));
+                    an.setWilsonScore(score*10000);
+                    System.out.println(score);
+                }
+                int result = (int)(o2.getWilsonScore()-o1.getWilsonScore());
+                // System.out.println(result);
+                return result;
+            }
+        });
+
         //查询每条问题回答数量
         int anssum2que = quebz.queryAnswerSumById(Integer.parseInt(queid));
 
@@ -118,10 +134,6 @@ public class VisitServlet extends HttpServlet {
         req.setAttribute("anssum", anssum);
         req.setAttribute("ansbs", ansbs);
         req.setAttribute("anssum2que", anssum2que);
-        req.setAttribute("page", page);
-        req.setAttribute("prePage", page-1);
-        req.setAttribute("nextPage", page+1);
-        req.setAttribute("totalPage", totalPage);
         req.setAttribute("ansSum", ansSum);
 
         List<Integer> queidList = quebz.queryQueidListByUserid(ub.getUserid());

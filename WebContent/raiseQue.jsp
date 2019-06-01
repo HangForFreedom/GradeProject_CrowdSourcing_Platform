@@ -46,7 +46,7 @@
 
 <header>
     <div class="top">
-        <a href="main.do" class="logo"></a>
+        <a href="main.do" class="logo">千言万语</a>
         <a href="main.do" class="nav">首页</a>
         <a href="main.do" class="nav">全部问题</a>
         <a href="scoreQue.to" class="nav">高分悬赏</a>
@@ -54,7 +54,7 @@
         <div class="user">
             <%--<a href="" class="log">登录</a>--%>
             <%--<a href="" class="log">注册</a>--%>
-            <a href="" class="log">个人中心</a>
+            <a href="myPage.do" class="log">个人中心</a>
             <a href="logout.do" class="log">注销</a>
         </div>
         <div class="so">
@@ -86,31 +86,22 @@
                 </div>
 
                 <div class="text">
-                    <select name="select" id="">
-                        <option value="">请选择分类</option>
-                        <option value="">社会民生</option>
-                        <option value="">健康生活</option>
-                        <option value="">文化艺术</option>
-                        <option value="">电脑网络</option>
-                        <option value="">行政地区</option>
-                        <option value="">医疗卫生</option>
-                        <option value="">经济金融</option>
-                        <option value="">法律法规</option>
-                        <option value="">科学教育</option>
-                        <option value="">体育运动</option>
-                        <option value="">电子数码</option>
-                        <option value="">娱乐休闲</option>
-                        <option value="">心理分析</option>
+                    <select name="queClasses" id="">
+                        <%--<option value="">请选择分类</option>--%>
+                        <%--<option value="">社会民生</option>--%>
+                        <c:forEach items="${classbs}" var="classb">
+                            <option value="${classb.classid}">${classb.className}</option>
+                        </c:forEach>
                     </select>
                 </div>
 
                 <div class="text">
                     <textarea name="queContent" id="editor" style="width:99.8%;height:300px;" placeholder="清楚的描述问题细节，让回答员清楚的了解原因（请勿发布违规内容）"></textarea>
                 </div>
-                <div class="text">
-                    <h2>添加标签(<span>最多添加5个标签</span>)</h2>
-                    <input id="tags" type="text" class="tags" value="PHP,JS"  placeholder="输入后按回车添加标签">
-                </div>
+                <%--<div class="text">--%>
+                    <%--<h2>添加标签(<span>最多添加5个标签</span>)</h2>--%>
+                    <%--<input id="tags" type="text" class="tags" value="PHP,JS"  placeholder="输入后按回车添加标签">--%>
+                <%--</div>--%>
 
                 <div class="xuans">
                     <span> 悬赏</span>
