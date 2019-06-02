@@ -90,4 +90,12 @@
         <servlet-name>OtherPageServlet</servlet-name>
         <url-pattern>/otherPage.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateQueServlet</servlet-name>
+        <servlet-class>com.gradp.servlet.UpdateQueServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQueServlet</servlet-name>
+        <url-pattern>/updateQue.do</url-pattern>
+    </servlet-mapping>
 </web-app>

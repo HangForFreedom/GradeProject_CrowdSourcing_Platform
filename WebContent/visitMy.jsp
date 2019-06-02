@@ -32,7 +32,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -64,7 +64,7 @@
 
                 <div class="vice-info">
                     <%--<a class="MydaBut" id="MydaBut"><i>答</i><span>我来答</sapn></a>--%>
-                    <div class="hits">浏览 16094 次</div>
+                    <%--<div class="hits">浏览 16094 次</div>--%>
                 </div>
             </c:forEach>
 
@@ -112,11 +112,13 @@
                             }
                         }
                         return false;
-                    }
+                    };
                     var agreedAnsList = "${agreedAnsList}";
                     var disagreeAnsList = "${disagreedAnsList}";
+                    var answerAnsList = "${answerAnsList}";
                     var agids = agreedAnsList.split(",");
                     var disagids = disagreeAnsList.split(",");
+                    var answerids = answerAnsList.split(",");
                     if(agids.contains(String(${ansb.ansid}))){
                         $('#divAgree${ansb.ansid}').addClass("FabulousActive");
                         $('#divDisagree${ansb.ansid}').prop("disabled", true);
@@ -127,10 +129,13 @@
                         $('#divAgree${ansb.ansid}').prop("disabled", true);
                         $('#divAgree${ansb.ansid}').css("cursor", "text");
                     }
+                    if (answerids.contains(String(${ansb.ansid}))){
+                        $('#MydaBut').remove();
+                    }
                 </script>
             </c:forEach>
             <!---AnswerItemList E--->
-        </div>
+        </div>·
         <!-----详情信息 E-------->
 
     </div>
@@ -139,17 +144,12 @@
 
     <div class="amRight">
         <a href="raise.do" class="askBut">我有问题，我要提问！</a>
-        <h2>最新公告</h2>
-        <div class="titleList">
-            <a href="">谁帮忙下载个文件呢，有偿，文件需要1个下载积分</a>
-            <a href="">多个矩阵相乘程序的编写，我是新手</a>
-        </div>
 
         <div class="userInfo">
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <a href="">${ub.username}</a>
+                    <a href="myPage.do">${ub.username}</a>
                     <%--<span><dl>声望：</dl><em>2601</em></span>--%>
                 </div>
             </div>

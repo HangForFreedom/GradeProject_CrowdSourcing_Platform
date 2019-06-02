@@ -28,7 +28,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -70,14 +70,28 @@
                         <i></i><span>${queb.score}</span>
                     </div>
                     <div class="share_bar_con">
-                        <span>
-                            <dl>浏览量</dl><em>(16)</em><i>|</i>
-                            <dl>点赞</dl><em class="cur">(16)</em><i>|</i>
-                            <dl>收藏</dl><em class="cur">(8)</em>
+                        <span id="updateQue${queb.queid}">
+
                         </span>
                     </div>
                 </div>
             </div>
+            <script>
+                Array.prototype.contains = function (obj) {
+                    var i = this.length;
+                    while (i--) {
+                        if (this[i] === obj) {
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+                var questionQueList = "${questionQueList}";
+                var queids = questionQueList.split(",");
+                if (queids.contains(String(${queb.queid}))){
+                    $('#updateQue${queb.queid}').append('<a href="updateQue.do?queid=${queb.queid}">修改</a>');
+                }
+            </script>
         </c:forEach>
 
         <%
@@ -124,17 +138,12 @@
 
     <div class="amRight">
         <a href="raise.do" class="askBut">我有问题，我要提问！</a>
-        <h2>最新公告</h2>
-        <div class="titleList">
-            <a href="">谁帮忙下载个文件呢，有偿，文件需要1个下载积分</a>
-            <a href="">多个矩阵相乘程序的编写，我是新手</a>
-        </div>
 
         <div class="userInfo">
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <a href="">${ub.username}</a>
+                    <a href="myPage.do">${ub.username}</a>
                 </div>
             </div>
             <div class="wenda">

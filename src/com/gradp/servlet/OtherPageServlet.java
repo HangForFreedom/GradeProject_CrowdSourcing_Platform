@@ -119,7 +119,11 @@ public class OtherPageServlet extends HttpServlet {
         req.setAttribute("quebs", quebs);
         req.setAttribute("queSum",queSum);
 
-        req.getRequestDispatcher("otherPage.jsp").forward(req, resp);
+        if (otherUsername.equals(ub.getUsername())){
+            req.getRequestDispatcher("myPage.jsp").forward(req, resp);
+        }else {
+            req.getRequestDispatcher("otherPage.jsp").forward(req, resp);
+        }
     }
 
 

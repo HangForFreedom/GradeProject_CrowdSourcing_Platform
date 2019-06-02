@@ -215,7 +215,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -236,7 +236,7 @@
                 <%--<div class="txt"><i class="w">问</i><span>提了 <a href="">${quesum}</a> 个问题 </span></div>--%>
                 <%--<div class="txt"><i class="d">答</i><span>回答了 <a href="">${anssum}</a> 个问题</span></div>--%>
             </div>
-            <div class="updateDetail"><a class="detalBtn" href="">编辑个人资料</a></div>
+            <%--<div class="updateDetail"><a class="detalBtn" href="">编辑个人资料</a></div>--%>
         </div>
     </div>
 
@@ -248,7 +248,7 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">他的问题 (${quesum})</a></li>
                 <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">他的回答 (${anssum})</a></li>
-                <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
+                <%--<li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>--%>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content tabs">
@@ -274,13 +274,6 @@
                                 <a href="classQue.to?classId=${queb.classid}">${queb.className}</a>
                                 <div class="Appreciation">
                                     <i></i><span>${queb.score}</span>
-                                </div>
-                                <div class="share_bar_con">
-                                    <span>
-                                        <dl>浏览量</dl><em>(16)</em><i>|</i>
-                                        <dl>点赞</dl><em class="cur">(16)</em><i>|</i>
-                                        <dl>收藏</dl><em class="cur">(8)</em>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -407,10 +400,10 @@
                     </div>
                     <!-----我的回答 E-------->
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="Section3">
-                    <h3>Section 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius.</p>
-                </div>
+                <%--<div role="tabpanel" class="tab-pane fade" id="Section3">--%>
+                    <%--<h3>Section 3</h3>--%>
+                    <%--<p></p>--%>
+                <%--</div>--%>
             </div>
         </div>
 
@@ -427,7 +420,7 @@
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <a href="">${ub.username}</a>
+                    <a href="myPage.do">${ub.username}</a>
                 </div>
             </div>
             <div class="wenda">

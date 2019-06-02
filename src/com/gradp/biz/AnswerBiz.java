@@ -87,4 +87,17 @@ public class AnswerBiz {
     public int userToAnsTotalPages(int pageSize, int userid){
         return ansDao.userToAnsTotalPages(pageSize, userid);
     }
+
+    /**
+     * 根据答案id，用户修改自己的回答
+     * */
+    public int updateAnswerById(Map m, int ansid){
+        return ansDao.updateAnswerById(m, ansid);
+    }
+    /**
+     * 根据答案id，用户删除自己的回答
+     * */
+    public int deleteAnswerById(int ansid){
+        return ansDao.deleteAnswerById(ansid);
+    }
 }

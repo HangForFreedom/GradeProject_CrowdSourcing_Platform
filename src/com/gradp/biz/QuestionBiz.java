@@ -139,4 +139,11 @@ public class QuestionBiz {
         return queDao.searchQuetionList(title);
     }
 
+    /**
+     * 根据问题id，用户修改自己的问题
+     * */
+    public int updateQuestionById(Map m, int queid){
+        return queDao.updateQuestionById(m, queid);
+    }
+
 }

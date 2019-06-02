@@ -26,7 +26,7 @@ public class MainServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         UserBiz ubz = new UserBiz();
         QuestionBiz quebz = new QuestionBiz();
-
+        QuestionBean quebn = new QuestionBean();
         //登录这信息
         HttpSession session = req.getSession();
         UserBean ub = (UserBean) session.getAttribute("ub");
@@ -59,8 +59,15 @@ public class MainServlet extends HttpServlet {
         int queSum = queb.size();
 
         //查询所有分类
-        List<ClassesBean> classbs = quebz.queryAllClasses();
+         List<ClassesBean> classbs = quebz.queryAllClasses();
 
+        //查询用户问题的问题列表
+        List<Integer> questionQueList = ubz.queryQuestionQueList(ub.getUserid());
+        String queids = "";
+        for (Integer integer : questionQueList) {
+            queids += integer + ",";
+        }
+        req.setAttribute("questionQueList", queids);
 
         req.setAttribute("quesum", quesum);
         req.setAttribute("anssum", anssum);
@@ -110,6 +117,14 @@ public class MainServlet extends HttpServlet {
 
         //查询所有分类
         List<ClassesBean> classbs = quebz.queryAllClasses();
+
+        //查询用户问题的问题列表
+        List<Integer> questionQueList = ubz.queryQuestionQueList(ub.getUserid());
+        String queids = "";
+        for (Integer integer : questionQueList) {
+            queids += integer + ",";
+        }
+        req.setAttribute("questionQueList", queids);
 
         req.setAttribute("quebs", quebs);
         req.setAttribute("quesum", quesum);

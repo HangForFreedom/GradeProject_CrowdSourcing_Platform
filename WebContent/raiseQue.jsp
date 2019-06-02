@@ -59,7 +59,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -141,7 +141,7 @@
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <a href="">${ub.username}</a>
+                    <a href="myPage.do">${ub.username}</a>
                     <%--<span><dl>声望：</dl><em>2601</em></span>--%>
                 </div>
             </div>

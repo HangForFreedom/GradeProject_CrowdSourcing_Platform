@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.gradp.bean.UserBean;
 import com.gradp.biz.UserBiz;
+import com.gradp.util.MD5Util;
 
 /**
  * Servlet implementation class LoginServlet
@@ -66,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 
 		UserBean ubean = new UserBean();
 		ubean.setPhone(phone);
-		ubean.setPassword(password);
+		ubean.setPassword(MD5Util.MD5Encrypt(password));
 
 		UserBiz ubz = new UserBiz();
 		UserBean ub = ubz.checkLogin(ubean);

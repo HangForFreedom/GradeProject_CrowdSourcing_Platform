@@ -109,6 +109,13 @@ public class UserBiz {
     }
 
 	/**
+	 * 查询用户提问过的问题的问题的列表（用于添加修改按钮）
+	 * */
+	public List<Integer> queryQuestionQueList(int userid){
+		return uid.queryQuestionQueList(userid);
+	}
+
+	/**
 	 * 查询用户回答过的某一问题的答案列表
 	 * */
 	public List<Integer> queryAswerAnsList(int userid, int queid){

@@ -31,7 +31,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -167,17 +167,12 @@
 
     <div class="amRight">
         <a href="raise.do" class="askBut">我有问题，我要提问！</a>
-        <h2>最新公告</h2>
-        <div class="titleList">
-            <a href="">谁帮忙下载个文件呢，有偿，文件需要1个下载积分</a>
-            <a href="">多个矩阵相乘程序的编写，我是新手</a>
-        </div>
 
         <div class="userInfo">
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <a href="">${ub.username}</a>
+                    <a href="myPage.do">${ub.username}</a>
                 </div>
             </div>
             <div class="wenda">

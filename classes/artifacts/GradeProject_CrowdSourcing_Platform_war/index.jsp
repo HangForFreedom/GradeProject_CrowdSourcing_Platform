@@ -47,8 +47,10 @@
 
 			<div class="remember clearfix">
 				<label class="remember-me">
-					<span class="icon"><span class="zt"></span></span>
-					<input type="checkbox" name="rempwd" id="remember-me" class="remember-mecheck" value="1">记住我</label>
+					<%--<span class="icon"><span class="zt"></span></span>--%>
+					<input type="checkbox" name="rempwd" id="remember-me" class="remember-mecheck" value="1" style="opacity: 1;">
+						<label style="margin-left: 18px;">记住我</label>
+				</label>
 				<label class="forgot-password">
 					<a href="updatePw.jsp">忘记密码？</a>
 				</label>
@@ -189,14 +191,14 @@
 		return "rgb(" + r + "," + g + "," + b + ")";
 	}
 
-	$("#remember-me").click(function(){
-		var n = document.getElementById("remember-me").checked;
-		if(n){
-			$(".zt").hide();
-		}else{
-			$(".zt").show();
-		}
-	});
+	// $("#remember-me").click(function(){
+	// 	var n = document.getElementById("remember-me").checked;
+	// 	if(n){
+	// 		$(".zt").hide();
+	// 	}else{
+	// 		$(".zt").show();
+	// 	}
+	// });
 </script>
 </body>
 </html>

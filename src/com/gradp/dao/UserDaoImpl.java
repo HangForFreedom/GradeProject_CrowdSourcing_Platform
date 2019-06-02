@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.gradp.bean.UserBean;
 import com.gradp.util.DBUtil;
+import com.gradp.util.MD5Util;
 
 public class UserDaoImpl {
 	DBUtil db = new DBUtil();
@@ -74,7 +75,7 @@ public class UserDaoImpl {
 	 * */
 	public int addUser(UserBean ub) {
 		String sql = "insert into user value(null,?,?,?,'img/image.png',100)";
-		Object []obj = {ub.getUsername(), ub.getPassword(), ub.getPhone()};
+		Object []obj = {ub.getUsername(), MD5Util.MD5Encrypt(ub.getPassword()), ub.getPhone()};
 		return db.update(sql, obj);
 	}
 	
@@ -163,6 +164,25 @@ public class UserDaoImpl {
 		for (Map<String, String> list : lists) {
 
 			for (String value : list.values()) {
+				result.add(Integer.parseInt(value));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * 查询用户提问过的问题的问题的列表（用于添加修改按钮）
+	 * */
+	public List<Integer> queryQuestionQueList(int userid){
+		List<Integer> result = new ArrayList<>();
+		String sql = "SELECT queid FROM question WHERE userid=?";
+		Object[] obj = {userid};
+		List<Map<String, String>> lists = db.query(sql, obj);
+		if (lists == null || lists.size() == 0){
+			return result;
+		}
+		for (Map<String, String> list : lists){
+			for (String value : list.values()){
 				result.add(Integer.parseInt(value));
 			}
 		}

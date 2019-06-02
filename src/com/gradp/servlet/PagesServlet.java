@@ -145,6 +145,14 @@ public class PagesServlet extends HttpServlet {
         List<ClassesBean> classbs = quebz.queryAllClasses();
         req.setAttribute("classbs", classbs);
 
+        //查询用户问题的问题列表
+        List<Integer> questionQueList = ubz.queryQuestionQueList(ub.getUserid());
+        String queids = "";
+        for (Integer integer : questionQueList) {
+            queids += integer + ",";
+        }
+        req.setAttribute("questionQueList", queids);
+
         req.setAttribute("quesum", quesum);
         req.setAttribute("anssum", anssum);
         req.setAttribute("page", page);
@@ -199,6 +207,15 @@ public class PagesServlet extends HttpServlet {
         //查询所有分类
         List<ClassesBean> classbs = quebz.queryAllClasses();
         req.setAttribute("classbs", classbs);
+
+        //查询用户问题的问题列表
+        List<Integer> questionQueList = ubz.queryQuestionQueList(ub.getUserid());
+        String queids = "";
+        for (Integer integer : questionQueList) {
+            queids += integer + ",";
+        }
+        req.setAttribute("questionQueList", queids);
+
         req.setAttribute("quesum", quesum);
         req.setAttribute("anssum", anssum);
         req.setAttribute("page", page);

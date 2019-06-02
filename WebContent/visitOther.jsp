@@ -30,7 +30,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -54,7 +54,6 @@
                 <h1><span>${queSolved}</span>${queb.title}</h1>
 
                 <div class="fui">
-                    // todo 浏览他人主页
                     <div class="time">${queb.time} <span><a href="" style="font:16px/24px 'microsoft yahei';color:#09F;">${queb.username}</a> 提问</span></div>
                     <div class="Appreciation"><i></i><span>${queb.score}</span></div>
                 </div>
@@ -63,7 +62,7 @@
 
                 <div class="vice-info">
                     <a class="MydaBut" id="MydaBut"><i>答</i><span>我来答</sapn></a>
-                    <div class="hits">浏览 16094 次</div>
+                    <%--<div class="hits">浏览 16094 次</div>--%>
                 </div>
             </c:forEach>
             <div class="AnswerForm" id="AnswerForm">
@@ -112,7 +111,7 @@
                             }
                         }
                         return false;
-                    }
+                    };
                     var agreedAnsList = "${agreedAnsList}";
                     var disagreeAnsList = "${disagreedAnsList}";
                     var answerAnsList = "${answerAnsList}";
@@ -144,17 +143,12 @@
 
     <div class="amRight">
         <a href="raise.do" class="askBut">我有问题，我要提问！</a>
-        <h2>最新公告</h2>
-        <div class="titleList">
-            <a href="">谁帮忙下载个文件呢，有偿，文件需要1个下载积分</a>
-            <a href="">多个矩阵相乘程序的编写，我是新手</a>
-        </div>
 
         <div class="userInfo">
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <a href="">${ub.username}</a>
+                    <a href="myPage.do">${ub.username}</a>
                     <%--<span><dl>声望：</dl><em>2601</em></span>--%>
                 </div>
             </div>

@@ -10,10 +10,12 @@
     <meta charset="utf-8">
     <title>个人中心</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/gridex.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-gridex.min.js"></script>
     <style>
         header .top .so .sobut {
             border: 0;
@@ -100,7 +102,7 @@
         .AnswerItemList {
             width: 100%;
             height: auto;
-            overflow: visible;
+            /*overflow: visible;*/
             margin-top: 10px;
         }
         .AnswerItemList .userInfo .info {
@@ -215,7 +217,7 @@
         </div>
         <div class="so">
             <input type="text" name="key" class="key" placeholder="请输入关键词">
-            <input type="submit" class="sobut" value="搜索答案">
+            <input type="submit" class="sobut" value="搜索问题">
         </div>
 
     </div>
@@ -227,7 +229,7 @@
             <div class="us">
                 <a href="" class="portrait"><img src="${ub.role}"></a>
                 <div class="info">
-                    <span href="">${ub.username}</span>
+                    <span href="myPage.do">${ub.username}</span>
                     <%--<span><dl>声望：</dl><em>2601</em></span>--%>
                 </div>
             </div>
@@ -248,7 +250,7 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">我的问题 (${quesum})</a></li>
                 <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">我的回答 (${anssum})</a></li>
-                <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>
+                <%--<li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Section 3</a></li>--%>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content tabs">
@@ -276,10 +278,8 @@
                                     <i></i><span>${queb.score}</span>
                                 </div>
                                 <div class="share_bar_con">
-                                    <span>
-                                        <dl>浏览量</dl><em>(16)</em><i>|</i>
-                                        <dl>点赞</dl><em class="cur">(16)</em><i>|</i>
-                                        <dl>收藏</dl><em class="cur">(8)</em>
+                                    <span id="updateQue${queb.queid}">
+                                        <a href="updateQue.do?queid=${queb.queid}">修改</a>
                                     </span>
                                 </div>
                             </div>
@@ -347,21 +347,63 @@
                                         <%--<div class="gradient" id="gradient${ansb.ansid}"></div>--%>
                                 </div>
                                     <%--<div class="read-more" id="read-more${ansb.ansid}"></div>--%>
-                                <div class="fuInfo">
-                                    <div id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></div>
-                                    <div id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></div>
-                                    <%--<a href="" class="Report solveBtn" id="solved${ansb.ansid}" onclick="solved(${ansb.ansid})">采纳</a>--%>
-                                    <div class="dropdown">
-                                        <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            设置
-                                            <span class="caret"></span>
-                                        </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                            <li><a href="">删除</a></li>
+                                <div class="fuInfo" style="position: relative;">
+                                    <button id="divAgree${ansb.ansid}" onclick="agree(${ansb.ansid}, ${ub.userid})" class="Fabulous"><span>顶</span><em>${ansb.agnum}</em></button>
+                                    <button id="divDisagree${ansb.ansid}" class="Fabulous" onclick="disagree(${ansb.ansid}, ${ub.userid})"><span>踩</span><em>${ansb.disagnum}</em></button>
+                                    <a class="Fabulous" id="deleteBtn${ansb.ansid}" onclick="doDelete(${ansb.ansid})" style="float: right;">删除</a>
+                                    <div style="float: right;">
+                                        <ul class="thumbnails gridex" style="margin-bottom: 0;">
+                                            <li class="span3 clearfix">
+                                                <button class="Fabulous thumbnail">编辑</button>
+                                                <div class="gd-expander" style="width: 100%!important;height: 0px!important;">
+                                                    <!-- gd-inner optional -->
+                                                    <div class="gd-inner">
+                                                        <form id="form1" name="form1" method="post" action="myPage.do?ansid=${ansb.ansid}" enctype="multipart/form-data">
+                                                            <textarea name="ansContent" id="editor1" style="width:99.8%;height:200px;">${ansb.content}</textarea>
+                                                            <div class="button" style="width: 100%;height: 34px;">
+                                                                <input type="submit" style="float: right;" class="button" value="修改回答">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
+                                    <%--<div class="AnswerForm" id="AnswerForm" style="height: 300px;">--%>
+                                    <%--</div>--%>
+                                    <!-- gd-expander required -->
                                 </div>
                             </div>
+                            <script>
+                                Array.prototype.contains = function (obj) {
+                                    var i = this.length;
+                                    while (i--) {
+                                        if (this[i] === obj) {
+                                            return true;
+                                        }
+                                    }
+                                    return false;
+                                };
+                                var agreedAnsList = "${agreedAnsList}";
+                                var disagreeAnsList = "${disagreedAnsList}";
+                                var agids = agreedAnsList.split(",");
+                                var disagids = disagreeAnsList.split(",");
+                                if(agids.contains(String(${ansb.ansid}))){
+                                    $('#divAgree${ansb.ansid}').addClass("FabulousActive");
+                                    $('#divDisagree${ansb.ansid}').prop("disabled", true);
+                                    $('#divDisagree${ansb.ansid}').css("cursor", "text");
+                                }
+                                if(disagids.contains(String(${ansb.ansid}))){
+                                    $('#divDisagree${ansb.ansid}').addClass("FabulousActive");
+                                    $('#divAgree${ansb.ansid}').prop("disabled", true);
+                                    $('#divAgree${ansb.ansid}').css("cursor", "text");
+                                }
+                                var text = "${solve}";
+                                if(text === "已采纳")
+                                {
+                                    $('deleteBtn${ansb.ansid}').remove();
+                                }
+                            </script>
                         </c:forEach>
                         <!---AnswerItemList E--->
                         <%
@@ -407,10 +449,10 @@
                     </div>
                     <!-----我的回答 E-------->
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="Section3">
-                    <h3>Section 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius.</p>
-                </div>
+                <%--<div role="tabpanel" class="tab-pane fade" id="Section3">--%>
+                    <%--<h3>Section 3</h3>--%>
+                    <%--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius.</p>--%>
+                <%--</div>--%>
             </div>
         </div>
 
@@ -457,7 +499,25 @@
 
 
 </div>
+<script type="text/javascript" src="js/layer/layer.js"></script>
+<script>
+    $(function() {
+        $('.gridex').gridex();
+    })
+</script>
 <script type="text/javascript">
+    function doDelete(ansid) {
+        var result = layer.confirm('确定删除此回答吗？', {
+                btn: ["确定", "取消"]
+            },function(index){
+                $.ajax({
+                    type: 'post',
+                    url: "deleteAns.go?ansid=" + ansid
+                });
+                layer.close(index);
+                location.reload();
+        });
+    }
 
     //获取当前用户顶过的 回答id 列表
     var agreedAnsList = "${agreedAnsList}";

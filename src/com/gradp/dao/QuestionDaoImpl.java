@@ -460,7 +460,7 @@ public class QuestionDaoImpl {
             queb.setTime(q.get("time"));
             queb.setImage(q.get("image"));
             queb.setUserid(Integer.parseInt(q.get("userid")));
-            queb.setUsername(q.get("username"));
+            queb.setUsername(queryUserNameByUserId(Integer.parseInt(q.get("userid"))));
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
@@ -507,7 +507,7 @@ public class QuestionDaoImpl {
             queb.setTime(q.get("time"));
             queb.setImage(q.get("image"));
             queb.setUserid(Integer.parseInt(q.get("userid")));
-            queb.setUsername(q.get("username"));
+            queb.setUsername(queryUserNameByUserId(Integer.parseInt(q.get("userid"))));
             queb.setRole(q.get("role"));
             queb.setScore(Integer.parseInt(q.get("score")));
             queb.setSolveFlag(Integer.parseInt(q.get("solveFlag")));
@@ -518,4 +518,15 @@ public class QuestionDaoImpl {
         }
         return quebs;
     }
+
+    /**
+     * 根据问题id，用户修改自己的问题
+     * */
+    public int updateQuestionById(Map m, int queid){
+        String sql = "UPDATE question SET title=?, content=?, classid=? WHERE queid=?";
+        Object[] obj = {m.get("queTitle"), m.get("queContent"), m.get("queClasses"), queid};
+        return db.update(sql, obj);
+    }
+
+
 }

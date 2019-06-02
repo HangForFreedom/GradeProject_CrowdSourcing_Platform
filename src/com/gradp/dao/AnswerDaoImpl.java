@@ -213,4 +213,22 @@ public class AnswerDaoImpl {
         }
         return "img/image.png";
     }
+
+    /**
+     * 根据答案id，用户修改自己的回答
+     * */
+    public int updateAnswerById(Map m, int ansid){
+        String sql = "UPDATE answer SET content=? WHERE ansid=?";
+        Object[] obj = {m.get("ansContent"), ansid};
+        return db.update(sql, obj);
+    }
+
+    /**
+     * 根据答案id，用户删除自己的回答
+     * */
+    public int deleteAnswerById(int ansid){
+        String sql = "DELETE FROM answer WHERE ansid=?";
+        Object[] obj = {ansid};
+        return db.update(sql, obj);
+    }
 }

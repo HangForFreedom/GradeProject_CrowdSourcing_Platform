@@ -120,4 +120,19 @@ public class OperateAsnwerServlet extends HttpServlet {
 
         resp.sendRedirect("visitOther.do");
     }
+
+    private void deleteAns(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        UserBean ub = (UserBean) session.getAttribute("ub");
+
+        String ansid = req.getParameter("ansid");
+        AnswerBiz ansbz = new AnswerBiz();
+
+        if (ansid != null){
+            //修改solveFlag状态
+            ansbz.deleteAnswerById(Integer.parseInt(ansid));
+
+            resp.sendRedirect("myPage.do");
+        }
+    }
 }

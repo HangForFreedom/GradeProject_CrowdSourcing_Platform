@@ -6,14 +6,22 @@ import com.gradp.bean.UserBean;
 import com.gradp.biz.AnswerBiz;
 import com.gradp.biz.QuestionBiz;
 import com.gradp.biz.UserBiz;
+import com.gradp.util.EmojiUtil;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -108,7 +116,12 @@ public class MyPageServlet extends HttpServlet {
         for (QuestionBean q : quebs){
             int queid = q.getQueid();
             int anssum2que = quebz.queryAnswerSumById(queid);
-            q.setAnssum2que(anssum2que);
+            q.setAnssum2que(anssum2que);List<Integer> answerAnsList = ubz.queryAswerAnsList(ub.getUserid(), queid);
+            String answerIds = "";
+            for (Integer integer : answerAnsList){
+                answerIds += integer + ",";
+            }
+            req.setAttribute("answerAnsList", answerIds);
         }
 
         req.setAttribute("quebs", quebs);
@@ -120,6 +133,66 @@ public class MyPageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        doGet(req, resp);
+        // doGet(req, resp);
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
+
+        HttpSession session = req.getSession();
+        UserBean ub = (UserBean) session.getAttribute("ub");
+        String ansid = req.getParameter("ansid");
+
+        AnswerBiz ansbz = new AnswerBiz();
+
+        //数据上传
+        //创建工厂类
+        DiskFileItemFactory dfif = new DiskFileItemFactory();
+
+        //创建文件上传对象
+        ServletFileUpload sfu = new ServletFileUpload(dfif);
+        Map texthm = new HashMap<>();
+        try {
+            //获取请求中的数据
+            List<FileItem> fileItem = sfu.parseRequest(req);
+            for (FileItem f : fileItem) {
+                if (f.isFormField()) {
+                    //文本
+                    texthm.put(f.getFieldName(), EmojiUtil.emojiToString(f.getString("UTF-8")));
+                }else {
+                    //图片
+                    //图片的上传目录
+                    String txPath = req.getSession().getServletContext().getRealPath("/upload");
+                    System.out.println(txPath);
+                    File file = new File(txPath);
+                    //判断文件是否存在
+                    if (!file.exists()) {
+                        //创建
+                        file.mkdirs();
+                    }
+                    String picpath=null;
+                    if (f.getSize()>0) {
+                        String imgname = f.getName();
+                        picpath = "upload/"+imgname;
+                        //写入
+                        f.write(new File(txPath+"/"+imgname));
+                        f.delete();
+                    }
+                    texthm.put("pic", picpath);
+                    System.out.println(picpath);
+                }
+            }
+
+        } catch (FileUploadException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        texthm.put("ansid", Integer.parseInt(ansid));
+        int result = ansbz.updateAnswerById(texthm, Integer.parseInt(ansid));
+        if (result!=0){
+            resp.sendRedirect("myPage.do");
+        }
     }
 }
