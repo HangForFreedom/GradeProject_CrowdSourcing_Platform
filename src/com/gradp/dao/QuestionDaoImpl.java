@@ -410,6 +410,24 @@ public class QuestionDaoImpl {
         return totalPages;
     }
 
+    /* 表中记录总数 **/
+    public String getQueTotalById(int userid){
+        String sql = "SELECT count(*) AS total FROM question WHERE userid=?";
+        Object[] obj = {userid};
+        List<Map<String, String>> lists = db.query(sql, obj);
+        if (lists.size()!=0){
+            return lists.get(0).get("total");
+        }
+        return null;
+    }
+
+    /* 根据用户Id查询总页数 */
+    public int queTotalPagesById(int pageSize, int userid){
+        int total = Integer.parseInt(getQueTotalById(userid));
+        int totalPages = (total % pageSize == 0) ? (total / pageSize) : (total / pageSize) + 1;
+        return totalPages;
+    }
+
 
     /***** 实现分类功能 *****/
 

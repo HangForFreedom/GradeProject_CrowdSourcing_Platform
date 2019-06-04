@@ -78,7 +78,7 @@
                     <div class="userInfo">
                         <a href="" class="portrait"><img src="${ansb.role}"></a>
                         <div class="info">
-                            <span><a href="">${ansb.username}</a></span>
+                            <span><a href="otherPage.do?username=?${ansb.username}">${ansb.username}</a></span>
                             <span><dl>回答时间：</dl><em>${ansb.time}</em></span>
                         </div>
                         <span class="Report" id="showSolve${ansb.ansid}"></span>

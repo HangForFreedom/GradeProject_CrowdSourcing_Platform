@@ -118,6 +118,11 @@ public class QuestionBiz {
         return queDao.queTotalPages(pageSize);
     }
 
+    /* 根据用户Id查询总页数 */
+    public int queTotalPagesById(int pageSize, int userid){
+        return queDao.queTotalPagesById(pageSize, userid);
+    }
+
     /**
      * 查询类别列表
      * */

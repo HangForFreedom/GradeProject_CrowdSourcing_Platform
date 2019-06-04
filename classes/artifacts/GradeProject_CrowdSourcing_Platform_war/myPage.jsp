@@ -238,7 +238,7 @@
                 <%--<div class="txt"><i class="w">问</i><span>提了 <a href="">${quesum}</a> 个问题 </span></div>--%>
                 <%--<div class="txt"><i class="d">答</i><span>回答了 <a href="">${anssum}</a> 个问题</span></div>--%>
             </div>
-            <div class="updateDetail"><a class="detalBtn" href="">编辑个人资料</a></div>
+            <%--<div class="updateDetail"><a class="detalBtn" href="">编辑个人资料</a></div>--%>
         </div>
     </div>
 
@@ -398,11 +398,11 @@
                                     $('#divAgree${ansb.ansid}').prop("disabled", true);
                                     $('#divAgree${ansb.ansid}').css("cursor", "text");
                                 }
-                                var text = "${solve}";
-                                if(text === "已采纳")
-                                {
-                                    $('deleteBtn${ansb.ansid}').remove();
-                                }
+                                <%--var text = "${solve}";--%>
+                                <%--if(text === "已采纳")--%>
+                                <%--{--%>
+                                    <%--$('deleteBtn${ansb.ansid}').remove();--%>
+                                <%--}--%>
                             </script>
                         </c:forEach>
                         <!---AnswerItemList E--->
@@ -619,7 +619,7 @@
     if(text === "已采纳")
     {
         $('#showSolve${solveansid}').text("${solve}");
-        $('.solveBtn').remove();
+        $('#deleteBtn${solveansid}').remove();
     }
 </script>
 <script type="text/javascript">

@@ -106,7 +106,7 @@ public class MyPageServlet extends HttpServlet {
             quePage = "1";
         }
         int quesPage = Integer.parseInt(quePage);
-        int queTotalPage = quebz.queTotalPages(pageSize);
+        int queTotalPage = quebz.queTotalPagesById(pageSize, ub.getUserid());
 
         req.setAttribute("quesPage", quesPage);
         req.setAttribute("queTotalPage", queTotalPage);

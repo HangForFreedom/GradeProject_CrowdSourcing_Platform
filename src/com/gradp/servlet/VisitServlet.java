@@ -119,7 +119,7 @@ public class VisitServlet extends HttpServlet {
                     double p_z = 1.96;
                     double score =  (pos + (Math.pow(p_z, 2) / (2.0*totalNum)) - ((p_z / (2.0*totalNum)) * Math.sqrt(4.0 * totalNum * (1.0 - pos) * pos + Math.pow(p_z, 2)))) / (1.0 + (Math.pow(p_z,2) / totalNum));
                     an.setWilsonScore(score*10000);
-                    System.out.println(score);
+                    // System.out.println(score);
                 }
                 int result = (int)(o2.getWilsonScore()-o1.getWilsonScore());
                 // System.out.println(result);

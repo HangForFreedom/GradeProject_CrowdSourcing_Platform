@@ -1,6 +1,5 @@
 package com.gradp.servlet;
 
-import com.gradp.bean.AnswerBean;
 import com.gradp.bean.ClassesBean;
 import com.gradp.bean.QuestionBean;
 import com.gradp.bean.UserBean;
